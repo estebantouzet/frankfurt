@@ -86,8 +86,11 @@ Le serveur SSH utilise « RSA » comme algorithme de chiffrement
 ## 4. Schématiser à l’aide d’un diagramme de séquence les échanges entre le client et le serveur lors d’une connexion SSH.
 
 **Client :** on est dans putty, on se connecte au serveur SSH 
+
 **Serveur :** le serveur nous communique une clé publique et nous demande si on accepte ou pas la clé  
+
 **Client :** utilisation de la clé publique par le client pour accéder au serveur SSH
+
 **Serveur :** le serveur nous autorise l’accès au serveur SSH
 
 (La **clé publique** nous permet de chiffrer les informations communiquer avec le switch, et seulement le Serveur peut déchiffrer les information grâce à **sa clé privée**.)
