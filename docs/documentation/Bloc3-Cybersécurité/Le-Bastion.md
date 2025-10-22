@@ -343,7 +343,9 @@ On va pouvoir se connecter à Apache Guacamole pour effectuer nos premiers pas s
 La page de connexion suivante va s'afficher :
 ![](../../media/bloc3/Bastion-6.png)
 
+
 Pour se connecter, on va utiliser les identifiants par défaut :
+
 * Utilisateur : guacadmin
 * Mot de passe : guacadmin
 
@@ -395,7 +397,9 @@ Voici l’historique de connexion effectuer sur notre serveur **Bastion**.
 
 ![](../../media/bloc3/Bastion-15.png)
 
-Nous pouvons identifier plusieurs informations importantes concernant la traçabilité comme : 
+
+Nous pouvons identifier plusieurs informations importantes concernant la traçabilité comme :
+
 * L’utilisateur 
 * L’heure d’ouverture d’une connexion à un serveur 
 * La durée de connexion
