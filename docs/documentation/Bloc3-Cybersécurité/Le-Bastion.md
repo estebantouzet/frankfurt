@@ -1,4 +1,4 @@
-# Situation 1 : phase d’analyse préalable
+# Présentation du service BASTION
 
 ![](../../media/logo-cub.png)
 
