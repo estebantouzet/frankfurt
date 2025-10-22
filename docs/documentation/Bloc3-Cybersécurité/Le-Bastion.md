@@ -42,7 +42,7 @@
 
 ## I - Présentation du service  
 
-C’est quoi le **Bastion** : *Un bastion d’administration c’est un serveur qui sert de passerelle sécurisée pour accéder à d’autres machines sur un **réseau privé**. Au lieu de se connecter directement au serveur interne, les utilisateurs vont d’abord se connecter au Bastion ce qui permet de mieux contrôler et de **surveiller les accès***
+C’est quoi le **Bastion** : Un bastion d’administration c’est un serveur qui sert de passerelle sécurisée pour accéder à d’autres machines sur un **réseau privé**. Au lieu de se connecter directement au serveur interne, les utilisateurs vont d’abord se connecter au Bastion ce qui permet de mieux contrôler et de **surveiller les accès**
 
 En claire, le Bastion permet de centraliser les connexions.
 
