@@ -2,7 +2,7 @@
 
 ![](../../media/logo-cub.png)
 
-## Prérequis : 
+## Prérequis
 
 ![](../../media/schema-logique-cub.png)
 
