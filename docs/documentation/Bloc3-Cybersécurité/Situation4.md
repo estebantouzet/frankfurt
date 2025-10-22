@@ -133,7 +133,7 @@ Le message d’alerte lors de la première connexion signale principalement que 
 
 
 ### Différence 
-**Une autorité de certification non-reconnue** c’est un qui est auto-signé, ou délivré par une CA interne à une entreprise.
+**Une autorité de certification non-reconnue** c’est un certificat qui est auto-signé, ou délivré par une CA interne à une entreprise.
 
 **Avantage :** flexible <br> **Inconvénient :** génère des alertes de sécurité et demande une configuration manuelle 
 
