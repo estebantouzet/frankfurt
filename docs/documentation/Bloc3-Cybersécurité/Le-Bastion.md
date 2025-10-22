@@ -112,15 +112,59 @@ Avant de passer à la suite, on vérifie la sortie de cette commande. Normalemen
 
 ![](../../media/bloc3/Bastion-2.png)
 
-??? En cas d'erreur !"
-    Regardez bien la sortie de la commande précédente, afin de vérifier la présence éventuelle d'une erreur. Si vous obtenez une erreur qui spécifie "guacenc_video_alloc", c'est lié au composant "guacenc" qui est utilisé pour créer les enregistrements au format vidéo. Dans ce cas, vous pouvez relancer la commande précédente en désactivant ce composant
-    ```bash
-    sudo ./configure --with-systemd-dir=/etc/systemd/system/ --disable-guacenc
-    ```
- 
+
+Regardez bien la sortie de la commande précédente, afin de vérifier la présence éventuelle d'une erreur. Si vous obtenez une erreur qui spécifie "**guacenc_video_alloc**", c'est lié au composant "**guacenc**" qui est utilisé pour créer les enregistrements au format vidéo. Dans ce cas, vous pouvez relancer la commande précédente en désactivant ce composant
+
+```bash
+sudo ./configure --with-systemd-dir=/etc/systemd/system/ --disable-guacenc
+```
+Ensuite, poursuivez avec la compilation du code source de guacamole-server :
+
+```bash
+sudo make
+```
+Enfin, on termine par installer le composant Guacamole Server :
+
+```bash
+sudo make install
+```
+
+![](../../media/bloc3/Bastion-3.png)
+
+<span style="color: red; font-weight: bold;">La partie serveur d'Apache Guacamole est installée !</span>
+Mais d'autres étapes sont à réaliser...
+
+La commande ci-dessous sert à mettre à jour les liens entre guacamole-server et les librairies :
+
+```bash
+sudo ldconfig
+```
+
+Ensuite, on va **démarrer le service** `guacd` correspondant à Guacamole et **activer son démarrage automatique**. La première commande sert à prendre en compte le nouveau service.
+
+```bash
+sudo systemctl daemon-reload
+```
+```bash
+sudo systemctl enable --now guacd
+```
+Enfin, on **vérifie le statut** d'Apache Guacamole Server :
+
+```bash
+sudo systemctl status guacd
+```
 
 ### Créer le répertoire de configuration
+
+Dernière étape avant de passer à la partie client d'Apache Guacamole, **on crée l'arborescence pour la configuration d'Apache Guacamole**. Cela va donner le répertoire `/etc/guacamole` avec les sous-répertoires "**extensions**" et "**lib**". Nous en aurons besoin par la suite pour mettre en place le stockage des données dans une base de données MariaDB / MySQL.
+
+```bash
+sudo mkdir -p /etc/guacamole/{extensions,lib}
+```
+
 ### Installer Guacamole Client (Web App)
+Pour la **Web App** correspondante à Apache Guacamole, et donc à la partie cliente, nous avons besoin d'un serveur **Tomcat 9** [^1] . J'insiste sur le fait que Tomcat 10, distribué par défaut via les dépôts de Debian 12, n'est pas pris en charge par Apache Guacamole. Nous devons ajouter le dépôt de Debian 11 sur notre machine Debian 12 afin de pouvoir télécharger les paquets correspondants à Tomcat 9. (Explication « Tomcat » en annexe)
+
 ### Base de données MariaDB pour l'authentification
 
 
@@ -137,4 +181,5 @@ Avant de passer à la suite, on vérifie la sortie de cette commande. Normalemen
 
 ## Annexe
 ### Annexe 1 : 
+[^1]    
 ### Annexe 2 : Pour plus de sécurité
