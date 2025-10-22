@@ -1,56 +1,41 @@
-# Préparation de la maquette et premiers paramétrages du serveur Windows2019
+## Prérequis : [3](#prérequis)](#prérequis)
 
-![](media/image1.png){width="3.123611111111111in"
-height="1.3284722222222223in"}
+[Sysprep : [3](#sysprep)](#sysprep)
 
-**Situation 1 -- Administration des systèmes**
+[Comparaison SID [5](#comparaison-sid)](#comparaison-sid)
 
-*[03/09/2025]{.underline}*
+[Changement d'adresse [5](#changement-dadresse)](#changement-dadresse)
 
-# Table des matières {#table-des-matières .TOC-Heading}
-
-[Préparation de la maquette et premiers paramétrages du serveur
-Windows2019
-\[1\](#préparation-de-la-maquette-et-premiers-paramétrages-du-serveur-windows2019)](#préparation-de-la-maquette-et-premiers-paramétrages-du-serveur-windows2019)
-
-[Prérequis : \[3\](#prérequis)](#prérequis)
-
-[Sysprep : \[3\](#sysprep)](#sysprep)
-
-[Comparaison SID \[5\](#comparaison-sid)](#comparaison-sid)
-
-[Changement d'adresse \[5\](#changement-dadresse)](#changement-dadresse)
-
-[Accès poste client \[6\](#accès-poste-client)](#accès-poste-client)
+[Accès poste client [6](#accès-poste-client)](#accès-poste-client)
 
 [Installer OpenSSH Server sur Windows
-\[7\](#installer-openssh-server-sur-windows)](#installer-openssh-server-sur-windows)
+[7](#installer-openssh-server-sur-windows)](#installer-openssh-server-sur-windows)
 
 [II. Configurer OpenSSH Server sur Windows
-\[7\](#ii.-configurer-openssh-server-sur-windows)](#ii.-configurer-openssh-server-sur-windows)
+[7](#ii.-configurer-openssh-server-sur-windows)](#ii.-configurer-openssh-server-sur-windows)
 
 [A. Démarrage automatique du serveur OpenSSH
-\[7\](#démarrage-automatique-du-serveur-openssh)](#démarrage-automatique-du-serveur-openssh)
+[7](#démarrage-automatique-du-serveur-openssh)](#démarrage-automatique-du-serveur-openssh)
 
 [B. Configuration d\'OpenSSH Server sur Windows
-\[8\](#configuration-dopenssh-server-sur-windows)](#configuration-dopenssh-server-sur-windows)
+[8](#configuration-dopenssh-server-sur-windows)](#configuration-dopenssh-server-sur-windows)
 
-[Connexion en ssh : \[10\](#connexion-en-ssh)](#connexion-en-ssh)
+[Connexion en ssh : [10](#connexion-en-ssh)](#connexion-en-ssh)
 
 [Installation du bureau à distance -- Protocole RDP
-\[10\](#installation-du-bureau-à-distance-protocole-rdp)](#installation-du-bureau-à-distance-protocole-rdp)
+[10](#installation-du-bureau-à-distance-protocole-rdp)](#installation-du-bureau-à-distance-protocole-rdp)
 
 [Activer le Bureau à distance sous Windows Server :
-\[10\](#\_Toc209598017)](#_Toc209598017)
+[10](#_Toc209598017)](#_Toc209598017)
 
-## ![](media/image2.png){width="7.527777777777778in" height="4.022916666666666in"}Prérequis :
+## ![](media/image2.png){width="7.527777777777778in" height="4.022916666666666in"}Prérequis : 
 
 Source :
 https://www.it-connect.fr/installer-et-configurer-openssh-server-sur-windows-server-2019/
 
-## Sysprep :
+## Sysprep : 
 
-Sysprep est l'**outil de préparation système de Windows**. Il permet de
+## Sysprep est l'**outil de préparation système de Windows**. Il permet de
 préparer une machine qui va servir de « master », en vue d'un futur
 déploiement.
 
@@ -123,7 +108,7 @@ icmp]{.underline}**
 
 8.  Donne un nom à la règle (ex : *Autoriser ICMP Ping*) → **Terminer**.
 
-## Installer OpenSSH Server sur Windows
+## Installer OpenSSH Server sur Windows 
 
 A partir d\'une console PowerShell ouverte en tant qu\'administrateur,
 la commande suivante permet l\'installation :
@@ -243,8 +228,8 @@ height="0.5472222222222223in"}
 
 ## Installation du bureau à distance -- Protocole RDP
 
-\[\]{#\_Toc209598017 .anchor}**[Activer le Bureau à distance sous
-Windows Server :]{.underline}**\
+[]{#_Toc209598017 .anchor}**[Activer le Bureau à distance sous Windows
+Server :]{.underline}**\
 Dans le **Gestionnaire de serveur \> Serveur local**, le
 paramètre *Bureau à distance* permet d'activer RDP. Par défaut
 désactivé, il empêche les connexions entrantes, mais le serveur peut
