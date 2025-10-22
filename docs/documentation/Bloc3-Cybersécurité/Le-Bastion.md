@@ -163,9 +163,55 @@ sudo mkdir -p /etc/guacamole/{extensions,lib}
 ```
 
 ### Installer Guacamole Client (Web App)
-Pour la **Web App** correspondante à Apache Guacamole, et donc à la partie cliente, nous avons besoin d'un serveur **Tomcat 9** [^1] . J'insiste sur le fait que Tomcat 10, distribué par défaut via les dépôts de Debian 12, n'est pas pris en charge par Apache Guacamole. Nous devons ajouter le dépôt de Debian 11 sur notre machine Debian 12 afin de pouvoir télécharger les paquets correspondants à Tomcat 9. (Explication « Tomcat » en annexe)
+Pour la **Web App** correspondante à Apache Guacamole, et donc à la partie cliente, nous avons besoin d'un serveur **Tomcat 9** [^1] . J'insiste sur le fait que **Tomcat 10, distribué par défaut via les dépôts de Debian 12**, n'est **pas pris en charge par Apache Guacamole**. Nous devons **ajouter le dépôt de Debian 11** sur notre machine Debian 12 afin de pouvoir **télécharger les paquets correspondants à Tomcat 9**. ([Explication « Tomcat » en annexe](#annexe-tomcat))
+
+Nous allons ajouter un nouveau fichier source pour Apt. Créez le fichier suivant :
+```bash
+sudo nano /etc/apt/sources.list.d/bullseye.list 
+```
+
+Ajoutez cette ligne, enregistrez et fermez le fichier.
+```bash
+deb http://deb.debian.org/debian/ bullseye main
+```
+
+Mettez à jour le cache des paquets :
+```bash
+sudo apt-get update
+```
+
+Effectuez l'installation des paquets Tomcat 9 sur Debian 12 avec cette commande :
+```bash
+sudo apt-get install tomcat9 tomcat9-admin tomcat9-common tomcat9-user
+```
+
+Puis, nous allons **télécharger la dernière version de la Web App d'Apache Guacamole** depuis le dépôt officiel (même endroit que pour la partie serveur). On se positionne dans `/tmp` et on télécharge la Web App, ce qui revient à télécharger un fichier avec l'extension `.war`. Ici, la **version 1.5.5** est téléchargée.
+
+```bash
+cd /tmp
+```
+```bash
+wget https://downloads.apache.org/guacamole/1.5.5/binary/guacamole-1.5.5.war
+```
+Une fois que le fichier est téléchargé, on le déplace dans la librairie de Web App de Tomcat9 avec cette commande :
+
+```bash
+sudo mv guacamole-1.5.5.war /var/lib/tomcat9/webapps/guacamole.war
+```
+
+Puis, on relance les services Tomcat9 et Guacamole :
+```bash
+sudo systemctl restart tomcat9 guacd
+```
+<span style="color: red; font-weight: bold;">Apache Guacamole Client est installé !</span>
 
 ### Base de données MariaDB pour l'authentification
+
+!!! info ""
+    Cette dernière étape avant de commencer à utiliser Apache Guacamole consiste à **déployer MariaDB Server (ou MySQL Server, au choix) sur Debian pour qu'Apache Guacamole s'appuie sur une base de données**. Cette base de données sera utilisée pour stocker toutes les informations de l'application.
+
+
+On commence par installer le paquet MariaDB Server :
 
 
 ## Utilisation d’Apache Guacamole
@@ -180,6 +226,8 @@ Pour la **Web App** correspondante à Apache Guacamole, et donc à la partie cli
 
 
 ## Annexe
-### Annexe 1 : 
-[^1]    
+### Annexe 1 : <span id="annexe-tomcat"></span>
 ### Annexe 2 : Pour plus de sécurité
+
+
+[^1]: Tomcat 9 sert d’intermédiaire entre le navigateur du client et les applications web Java hébergées sur le serveur.  
