@@ -61,10 +61,12 @@ Se connecter au switch en SSH, puis faire **« open »** et le message suivant s
 ![](../../media/bloc3/Situation4-Q2.1.png)
 
 Cliquer sur **“More info...”**
+
 ![](../../media/bloc3/Situation4-Q2.2.png)
 
 
 Votre clé publique s’affiche :
+
 ![](../../media/bloc3/Situation4-Q2.3.png)
 
 
@@ -74,6 +76,7 @@ Maintenant il faut comparer la clé que vous avez ci-dessus et la clé que vous 
 show ip ssh
 ```
 ![](../../media/bloc3/Situation4-Q2.4.png)
+
 Les clés sont bien les même alors vous pouvez vous connecter en SSH.
 
 ## 3. Préciser l’algorithme de chiffrement utilisé par le serveur SSH
@@ -86,11 +89,8 @@ Le serveur SSH utilise « RSA » comme algorithme de chiffrement
 ## 4. Schématiser à l’aide d’un diagramme de séquence les échanges entre le client et le serveur lors d’une connexion SSH.
 
 **Client :** on est dans putty, on se connecte au serveur SSH 
-
 **Serveur :** le serveur nous communique une clé publique et nous demande si on accepte ou pas la clé  
-
 **Client :** utilisation de la clé publique par le client pour accéder au serveur SSH
-
 **Serveur :** le serveur nous autorise l’accès au serveur SSH
 
 (La **clé publique** nous permet de chiffrer les informations communiquer avec le switch, et seulement le Serveur peut déchiffrer les information grâce à **sa clé privée**.)
@@ -98,14 +98,15 @@ Le serveur SSH utilise « RSA » comme algorithme de chiffrement
 ## 5. Connexion en HTTPS sur l’interface d’administration du pare-feu. Relever les éléments présents dans le certificat TLS/SSL
 
 Cliqué sur le cadenas
+
 ![](../../media/bloc3/Situation4-Q5.1.png)
-<br>
 
 Faire afficher le certificat
+
 ![](../../media/bloc3/Situation4-Q5.2.png)
-<br>
 
 Puis afficher le certificat :
+
 ![](../../media/bloc3/Situation4-Q5.3.png)
 <br>
 
