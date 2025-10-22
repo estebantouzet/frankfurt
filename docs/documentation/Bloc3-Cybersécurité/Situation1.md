@@ -1,6 +1,6 @@
 # Situation 1 : phase d’analyse préalable
 
-![](/media/logo-cub.png)
+![](../media/logo-cub.png)
 
 ## Prérequis : 
 
