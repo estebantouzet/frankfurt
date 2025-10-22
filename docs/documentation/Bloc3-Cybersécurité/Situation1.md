@@ -4,7 +4,7 @@
 
 ## Prérequis : 
 
-![](/media/schema-logique-cub.png)
+![](../../media/schema-logique-cub.png)
 
 *Ducumentation en ligne : [https://cubdocumentation.sioplc.fr](https://cubdocumentation.sioplc.fr)*
 <br>
@@ -19,7 +19,7 @@
 ## Packet tracert - Agence Frankfurt
 <br>
 
-![](/media/packet-tracert-v1.jpg)
+![](../../media/packet-tracert-v1.jpg)
 <br>
 
 <div style="text-align:center; margin-top:20px;">
