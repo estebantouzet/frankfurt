@@ -356,18 +356,23 @@ Pour se connecter, on va utiliser les identifiants par défaut :
 Nous allons créer notre première connexion dans Apache Guacamole, de manière à **se connecter à un serveur en SSH !**
 
 Pour créer une nouvelle connexion : `Paramètres > Connexion > Nouvelle connexion`
+
 ![](../../media/bloc3/Bastion-7.png)
 
 Puis dans l’onglet « **Connexions** » faite « **Nouvelle Connexion** » 
+
 ![](../../media/bloc3/Bastion-8.png)
 
 Renseigner maintenant les informations de votre serveur **cible** :
+
 ![](../../media/bloc3/Bastion-9.png)
 
 Retourner maintenant dans Accueil
+
 ![](../../media/bloc3/Bastion-10.png)
 
 Cliquer simplement sur la configuration de connexion que vous venez de créer afin de vous y connecter 
+
 ![](../../media/bloc3/Bastion-11.png)
 
 ![](../../media/bloc3/Bastion-12.png)
