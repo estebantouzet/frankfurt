@@ -220,8 +220,7 @@ Puis, on exécute le script ci-dessous pour sécuriser un minimum notre instance
 ```bash
 sudo mysql_secure_installation
 ```
-
-<img src="../../media/bloc3/Bastion-4.png" alt="Bastion" width="450px">
+![](../../media/bloc3/Bastion-4.png)
 
 Une fois cette étape effectuée, on va se connecter en tant que root à notre instance MariaDB :
 ```bash
