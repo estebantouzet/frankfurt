@@ -88,10 +88,7 @@ Le serveur SSH utilise « RSA » comme algorithme de chiffrement
 
 ## 4. Schématiser à l’aide d’un diagramme de séquence les échanges entre le client et le serveur lors d’une connexion SSH.
 
-**Client :** on est dans putty, on se connecte au serveur SSH 
-**Serveur :** le serveur nous communique une clé publique et nous demande si on accepte ou pas la clé  
-**Client :** utilisation de la clé publique par le client pour accéder au serveur SSH
-**Serveur :** le serveur nous autorise l’accès au serveur SSH
+**Client :** on est dans putty, on se connecte au serveur SSH <br> **Serveur :** le serveur nous communique une clé publique et nous demande si on accepte ou pas la clé  <br> **Client :** utilisation de la clé publique par le client pour accéder au serveur SSH <br> **Serveur :** le serveur nous autorise l’accès au serveur SSH
 
 (La **clé publique** nous permet de chiffrer les informations communiquer avec le switch, et seulement le Serveur peut déchiffrer les information grâce à **sa clé privée**.)
 
@@ -138,12 +135,10 @@ Le message d’alerte lors de la première connexion signale principalement que 
 ### Différence 
 **Une autorité de certification non-reconnue** c’est un qui est auto-signé, ou délivré par une CA interne à une entreprise.
 
-**Avantage :** flexible
-**Inconvénient :** génère des alertes de sécurité et demande une configuration manuelle 
+**Avantage :** flexible <br> **Inconvénient :** génère des alertes de sécurité et demande une configuration manuelle 
 
 **Une autorité de certification reconnue** est un organisme dont les certificats racine sont déjà intégrés dans les navigateurs, les systèmes d’exploitation et les appareils. (exemple : DigiCert, GlobalSign, Let’s Encrypt).
 
 Les certificats qu’elle délivre sont automatiquement considérés comme fiables.
 
-**Avantage :** confiance universelle
-**Inconvénient :** coût/dépendance
+**Avantage :** confiance universelle  <br> **Inconvénient :** coût/dépendance
