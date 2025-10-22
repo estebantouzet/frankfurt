@@ -42,10 +42,8 @@
 
 ## 1. Installer vos 3 VM (sans les services) et paramétrer correctement leurs cartes réseaux 
 
-<p>
-  <img src="../../media/bloc3/Situation2-Q1.png" width="45%">
-  <img src="../../media/bloc3/Situation2-Q1.1.png" width="44.5%">
-</p>
+| ![](../../media/bloc3/Situation2-Q1.png) | ![](../../media/bloc3/Situation2-Q1.1.png) |
+|:--:|:--:|
 
 ## 2. Renommer le pare-feu : FW-Frankfurt
 
