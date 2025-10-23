@@ -60,7 +60,7 @@ En claire, le Bastion permet de centraliser les connexions.
 
 ## II - Installer Apache Guacamole sur Debian
 
-### Installer les prérequis d'Apache Guacamole
+### A - Installer les prérequis d'Apache Guacamole
 
 Sur la machine Debian, l’installation de ces dépendances se fait à l’aide de la commande suivante :
 
@@ -72,7 +72,7 @@ apt-get install build-essential libcairo2-dev libjpeg62-turbo-dev libpng-dev lib
 ```
 Patienter le temps de l'installation.
 
-### Compiler et installer Apache Guacamole "Server"
+### B - Compiler et installer Apache Guacamole "Server"
 
 La partie « Server » d’Apache Guacamole doit être téléchargée puis compilée localement pour procéder à l’installation. Nous utiliserons la dernière version disponible, en l’occurrence la 1.5.5. Pour vérifier la version la plus récente, il est possible de s’appuyer sur les deux liens suivants :
 
@@ -153,7 +153,7 @@ Enfin, on **vérifie le statut** d'Apache Guacamole Server :
 sudo systemctl status guacd
 ```
 
-### Créer le répertoire de configuration
+### C - Créer le répertoire de configuration
 
 Dernière étape avant de passer à la partie client d'Apache Guacamole, **on crée l'arborescence pour la configuration d'Apache Guacamole**. Cela va donner le répertoire `/etc/guacamole` avec les sous-répertoires "**extensions**" et "**lib**". Nous en aurons besoin par la suite pour mettre en place le stockage des données dans une base de données MariaDB / MySQL.
 
@@ -161,7 +161,7 @@ Dernière étape avant de passer à la partie client d'Apache Guacamole, **on cr
 sudo mkdir -p /etc/guacamole/{extensions,lib}
 ```
 
-### Installer Guacamole Client (Web App)
+### D - Installer Guacamole Client (Web App)
 Pour la **Web App** correspondante à Apache Guacamole, et donc à la partie cliente, nous avons besoin d'un serveur **Tomcat 9** [^1] . J'insiste sur le fait que **Tomcat 10, distribué par défaut via les dépôts de Debian 12**, n'est **pas pris en charge par Apache Guacamole**. Nous devons **ajouter le dépôt de Debian 11** sur notre machine Debian 12 afin de pouvoir **télécharger les paquets correspondants à Tomcat 9**. ([Explication « Tomcat » en annexe](#annexe-tomcat))
 
 Nous allons ajouter un nouveau fichier source pour Apt. Créez le fichier suivant :
@@ -204,7 +204,7 @@ sudo systemctl restart tomcat9 guacd
 ```
 <span style="color: red; font-weight: bold;">Apache Guacamole Client est installé !</span>
 
-### Base de données MariaDB pour l'authentification
+### E - Base de données MariaDB pour l'authentification
 
 !!! info "Déploiement de MariaDB"
     Cette dernière étape avant de commencer à utiliser Apache Guacamole consiste à **déployer MariaDB Server (ou MySQL Server, au choix) sur Debian pour qu'Apache Guacamole s'appuie sur une base de données**. Cette base de données sera utilisée pour stocker toutes les informations de l'application.
@@ -352,7 +352,7 @@ Pour se connecter, on va utiliser les identifiants par défaut :
 **Nous voilà sur Apache Guacamole !** Mais pour l'instant, c'est vide... 
 
 
-### Ajouter une connexion SSH
+### A - Ajouter une connexion SSH
 Nous allons créer notre première connexion dans Apache Guacamole, de manière à **se connecter à un serveur en SSH !**
 
 Pour créer une nouvelle connexion : `Paramètres > Connexion > Nouvelle connexion`
@@ -382,7 +382,7 @@ Cliquer simplement sur la configuration de connexion que vous venez de créer af
 
 Dans le cadre de **l’administration et du suivi des accès**, la récupération des logs de connexion est une étape essentielle. Apache Guacamole enregistre les événements liés aux connexions utilisateurs, ce qui permet d’assurer une meilleure **traçabilité**, de faciliter le diagnostic en cas d’incident et de renforcer la **sécurité de l’infrastructure**. Cette section présente les méthodes permettant d’accéder et d’exploiter ces journaux.
 
-### Sur l'interface de la Web App de Apache Guacamole :
+### A - Sur l'interface de la Web App de Apache Guacamole :
 
 La web App de Apache Guacamole utilise la base de données MariaDB pour récupérer les informations suivantes.
 
@@ -412,7 +412,7 @@ Nous pouvons identifier plusieurs informations importantes concernant la traçab
 * L’adresse IP du client 
 
 
-### En ligne de commande sur notre serveur Apache Guacamole :
+### B - En ligne de commande sur notre serveur Apache Guacamole :
 
 Connection a MariaDB :
 ```bash
