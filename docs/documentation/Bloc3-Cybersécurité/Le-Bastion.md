@@ -397,7 +397,7 @@ La web App de Apache Guacamole utilise la base de données MariaDB pour récupé
 
 Voici l’historique de connexion effectuer sur notre serveur **Bastion**. 
 
-!!! note "Télécherger le connecteur MySQL"
+!!! note "Télécherger un fichier de log"
     Il est également possible de télécherger les logs en fichier **csv**. Il suffit de cliquer sur le bouton "**Télécharger**" en haut à droite.
 
 ![](../../media/bloc3/Bastion-15.png)
