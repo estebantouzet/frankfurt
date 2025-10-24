@@ -67,7 +67,7 @@ Double cliquez sur « **sysprep** »
 
 ![](../../media/bloc2/AdminSys/Situation1-2.png)
 
-Quand tout de passe bien, il vous affiche cette petite fenêtre qui reste ouverte plusieurs minutes :
+Quand tout ce passe bien, il vous affiche cette petite fenêtre qui reste ouverte plusieurs minutes :
 
 ![](../../media/bloc2/AdminSys/Situation1-3.png)
 
