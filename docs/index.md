@@ -1,8 +1,8 @@
- # Documentation de l'agence CUB Frankfurt
+# Documentation de l'agence CUB Frankfurt
 
- Bienvenue sur la documentation CUB Hong-Kong produite en Markdown et avec Mkdocs...
+Bienvenue sur la documentation CUB Hong-Kong produite en Markdown et avec Mkdocs...
 
- # 🌐 Agence Frankfurt – Documentation technique
+# 🌐 Agence Frankfurt – Documentation technique
 
 <div style="background: linear-gradient(90deg, #004aad, #007bff); color: white; padding: 1.2em 1.5em; border-radius: 12px; margin-top: 1em;">
   <h2 style="margin-top: 0;">Projet CUB – Mise en place de l’infrastructure réseau</h2>
