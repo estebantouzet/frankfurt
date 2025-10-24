@@ -64,7 +64,91 @@ Cette documentation est structurée selon les grandes étapes du projet :
 
 <div style="text-align: center; margin-top: 2em;">
   <em>Projet réalisé par l’agence <strong>Frankfurt</strong> – BTS SIO SISR</em><br>
-  <a href="https://estebantouzet.github.io/frankfurt/" target="_blank" style="color: #007bff; text-decoration: none;">🔗 Accéder au site de documentation</a>
+  <em>Esteban TOUZET</em><br>
 </div>
 
 
+
+
+
+---
+
+
+# 🌍 Agence Frankfurt
+
+<div class="hero" style="background: linear-gradient(90deg, #003366, #0055aa); color: white; padding: 2em 1.5em; border-radius: 14px; text-align: center; margin-bottom: 2em;">
+  <h1 style="margin: 0; font-size: 2.2em;">Projet CUB – Infrastructure réseau</h1>
+  <p style="font-size: 1.1em; margin-top: 0.6em;">Documentation officielle de l’agence <strong>Frankfurt</strong><br>
+  <em>BTS SIO option SISR – Bloc 2 et 3</em></p>
+  <a href="https://estebantouzet.github.io/frankfurt/" target="_blank" style="background: white; color: #003366; padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: bold;">🌐 Consulter le site</a>
+</div>
+
+## 🏢 Présentation du projet
+
+**CUB** est une entreprise fondée en 2010, spécialisée dans l’**incubation de startups** autour de valeurs fortes de **solidarité** et de **développement durable**.  
+Elle met à disposition des professionnels des espaces collaboratifs : **salles de réunion**, **bureaux partagés**, **séminaires** et **formations** accessibles via une plateforme web sécurisée.
+
+L’entreprise dispose d’un **réseau international** d’agences situées à Paris (siège), Anvers, Barcelone, Hong-Kong, Los Angeles, Corse… et **Frankfurt**.  
+Chaque agence bénéficie d’une **adresse IPv4 publique dédiée** issue du préfixe `192.36.0.0/16`, attribué par le **RIPE NCC**, et gère son propre pare-feu local.  
+CUB est reconnue comme un **LIR (Local Internet Registry)** et administre le domaine :  
+➡️ `cub.sioplc.fr`
+
+---
+
+<div class="admonition tip">
+  <p class="admonition-title">🎯 Objectif de l’agence Frankfurt</p>
+  <p>Déployer, sécuriser et documenter l’infrastructure réseau locale de l’agence selon la stratégie définie par la DSI de CUB, en suivant les recommandations de l’<strong>ANSSI</strong>.</p>
+</div>
+
+### Objectifs techniques
+- Concevoir une **segmentation réseau** (LAN, DMZ, VLAN d’administration).  
+- Établir un **plan d’adressage IPv4** clair et extensible.  
+- Configurer les **commutateurs, pare-feux et serveurs locaux**.  
+- Garantir la **sécurité et la haute disponibilité** du réseau.  
+- Fournir une **documentation technique complète** sur GitHub Pages.
+
+---
+
+## 🧩 Architecture et organisation
+
+Le **siège de Paris** centralise la politique informatique de CUB et assure la cohérence entre toutes les agences.  
+Chaque **Service Informatique de Proximité (SIP)** – dont celui de Frankfurt – gère :
+
+- L’**assistance aux utilisateurs** sur site,  
+- La **maintenance de l’infrastructure réseau**,  
+- La **supervision des serveurs**,  
+- La **mise à jour de la documentation technique**.
+
+---
+
+## 🖥️ Informations réseau – Agence Frankfurt
+
+| Élément | Adresse / VLAN | Description |
+|----------|----------------|-------------|
+| **LAN Frankfurt** | `192.168.6.0/24` | Réseau interne |
+| **DMZ Frankfurt** | `192.36.6.0/24` | Services accessibles depuis l’extérieur |
+| **VLAN Administration** | `192.168.66.192/28` | Gestion et supervision |
+| **Pare-feu (FW6)** | `192.168.66.254 / 192.36.6.254 / 192.36.253.60` | Sécurité et routage |
+| **WAN** | `192.36.253.0/24` | Interconnexion inter-agences |
+
+---
+
+## 🧭 Structure de la documentation
+
+<div class="grid cards" markdown>
+- **Phase d’analyse et de maquettage**  
+  Étude du réseau actuel, définition des besoins, conception logique et physique.
+- **Phase de prototypage et mise en œuvre**  
+  Configuration des équipements et déploiement de la solution.
+- **Phase de validation (recette)**  
+  Tests de conformité, sécurité et performance.
+- **Documentation finale**  
+  Procédures, schémas, et configurations validées.
+</div>
+
+---
+
+<div style="text-align: center; margin-top: 2.5em;">
+  <p><em>Réalisé par l’agence <strong>Frankfurt</strong> – BTS SIO SISR</em></p>
+  <a href="https://cubdocumentation.sioplc.fr" target="_blank" style="color:#0055aa; text-decoration:none;">🔗 Documentation CUB officielle</a>
+</div>
