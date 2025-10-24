@@ -51,7 +51,7 @@ ___
 
 ___
 
-## 1. Réponse aux questions de la situation - Intoduction au PwerShell[^1] :
+## 1. Réponse aux questions de la situation - Intoduction au PowerShell[^1] :
 
 ??? info "La sensiblité à la casse de PowerShell "
     PowerShell n’est pas sensible à la casse par défaut : variables, cmdlets et paramètres fonctionnent quelle que soit la casse. Pour les comparaisons de chaînes, certains opérateurs sont insensibles (-eq, -like) et d’autres sensibles (-ceq, -clike). <br>
