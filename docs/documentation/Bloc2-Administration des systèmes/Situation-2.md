@@ -1,4 +1,4 @@
-# Situation 1 - Préparation de la maquette et premiers paramétrages du serveur Windows2019
+# Situation 2 - Mise en place et découverte d’un environnement de développement GIT
 
 
 ![](../../media/logo-cub.png)
