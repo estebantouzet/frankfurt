@@ -1,10 +1,10 @@
 site_name: Le contexte CUB Frankfurt - Esteban TOUZET 
 site_url: https://estebantouzet.github.io/frankfurt
-copyright: Licence CC 4.0 FR BY-NC-SA - 2025 D. Balny et Q. Demoulière - Lycée Paul-Louis Courier 
+copyright: copyright par moi même Esteban TOUZET :) 
 theme:
   name: material
-  logo: ./media/favion.png
-  favicon: ./media/favion.png
+  logo: ./docs/media/favicon.png
+  favicon: ./media/favicon.png
   language: fr
   features:
     - navigation.footer
