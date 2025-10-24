@@ -4,7 +4,7 @@ copyright: copyright par moi même Esteban TOUZET :)
 theme:
   name: material
   logo: ./media/logo.png
-  favicon: ./media/
+  favicon: ./media/favicon.png
   language: fr
   features:
     - navigation.footer
