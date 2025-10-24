@@ -3,7 +3,7 @@ site_url: https://estebantouzet.github.io/frankfurt
 copyright: Licence CC 4.0 FR BY-NC-SA - 2025 D. Balny et Q. Demoulière - Lycée Paul-Louis Courier 
 theme:
   name: material
-  logo: ./media/logo-cub.png
+  logo: ./media/favion.png
   favicon: ./media/favicon.png
   language: fr
   features:
