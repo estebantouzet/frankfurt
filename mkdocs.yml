@@ -4,7 +4,7 @@ copyright: Licence CC 4.0 FR BY-NC-SA - 2025 D. Balny et Q. Demoulière - Lycée
 theme:
   name: material
   logo: ./media/favion.png
-  favicon: ./media/favicon.png
+  favicon: ./media/favion.png
   language: fr
   features:
     - navigation.footer
