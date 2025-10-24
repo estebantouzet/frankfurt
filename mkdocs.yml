@@ -3,8 +3,8 @@ site_url: https://estebantouzet.github.io/frankfurt
 copyright: copyright par moi même Esteban TOUZET :) 
 theme:
   name: material
-  logo: ./docs/media/favicon.png
-  favicon: ./media/favicon.png
+  logo: ./media/logo.png
+  favicon: ./media/
   language: fr
   features:
     - navigation.footer
