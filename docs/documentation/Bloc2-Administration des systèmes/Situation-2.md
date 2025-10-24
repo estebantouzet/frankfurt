@@ -297,3 +297,8 @@ git push -u origin main
 [^1]: Un **environnement Git** désigne l’ensemble des outils, configurations et dépôts permettant de gérer le **versionnement du code ou des fichiers** à l’aide de Git.  Il comprend généralement un **dépôt local** (sur la machine de l’utilisateur) et un **dépôt distant** (hébergé sur une plateforme comme GitHub, GitLab ou Bitbucket).  
 Cet environnement permet de suivre l’historique des modifications, de collaborer avec d’autres utilisateurs, de revenir à des versions précédentes et de gérer différentes branches d’un projet.<br>  
 Sous Windows, il peut être configuré via **Git Bash** ou un client graphique comme **GitHub Desktop**, tout en s’appuyant sur **OpenSSH** pour les connexions sécurisées.
+
+## Annexe
+
+![](../../media/bloc2/AdminSys/Situation2-33.png)
+
