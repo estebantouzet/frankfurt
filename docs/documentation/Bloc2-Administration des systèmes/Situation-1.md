@@ -171,7 +171,6 @@ Au sein du fichier **sshd_config**, nous allons retrouver les options classiques
 !!! warning "Attention tout de même"
     À ce jour, il y a des options non supportées comme les options X11. La liste complète des options non supportées est disponible sur le site Microsoft : OpenSSH - Options non supportées
 
-<br>
 
 **Modifier le port d'écoute SSH**
 
