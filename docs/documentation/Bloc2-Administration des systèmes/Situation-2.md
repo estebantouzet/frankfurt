@@ -205,7 +205,7 @@ git log
 
 Sur GitHub, cliquez sur New repository et nomme-le "*premierdepotgithub*"
 
-Url : https://github.com/estebantouzet/premierdepotgithub.git
+Url : [https://github.com/estebantouzet/premierdepotgithub.git](https://github.com/estebantouzet/premierdepotgithub.git)
 
 **Question 24 : Cloner ce nouveau dépôt vers votre machine en local dans le dossier « git_cub » : `git clone lien https de github pour le dépôt`**
 
