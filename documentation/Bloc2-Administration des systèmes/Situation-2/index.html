@@ -1,0 +1,1820 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://estebantouzet.github.io/frankfurt/documentation/Bloc2-Administration%20des%20syst%C3%A8mes/Situation-2/">
+      
+      
+        <link rel="prev" href="../Situation-1/">
+      
+      
+        <link rel="next" href="../Situation-3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../media/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Situation 2 - Mise en place et découverte d’un environnement de développement GIT - Le contexte CUB Frankfurt - Esteban TOUZET</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#situation-2-mise-en-place-et-decouverte-dun-environnement-de-developpement-git" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Le contexte CUB Frankfurt - Esteban TOUZET" class="md-header__button md-logo" aria-label="Le contexte CUB Frankfurt - Esteban TOUZET" data-md-component="logo">
+      
+  <img src="../../../media/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Le contexte CUB Frankfurt - Esteban TOUZET
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Situation 2 - Mise en place et découverte d’un environnement de développement GIT
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Le contexte CUB Frankfurt - Esteban TOUZET" class="md-nav__button md-logo" aria-label="Le contexte CUB Frankfurt - Esteban TOUZET" data-md-component="logo">
+      
+  <img src="../../../media/logo.png" alt="logo">
+
+    </a>
+    Le contexte CUB Frankfurt - Esteban TOUZET
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bloc2 Administration des systèmes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bloc2 Administration des systèmes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 1 - Préparation de la maquette et premiers paramétrages du serveur Windows2019
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 2 - Mise en place et découverte d’un environnement de développement GIT
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 2 - Mise en place et découverte d’un environnement de développement GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adressage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adressage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-logique-agence-frankfur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schéma logique – Agence Frankfur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-tracert-agence-frankfurt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet tracert - Agence Frankfurt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1-installation-de-lenvironnement-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 – Installation de l’environnement GIT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2-initialisation-de-lenvironnement-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 - Initialisation de l’environnement Git :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3-gerer-les-versions-commits-en-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 – Gérer les versions (commits) en local
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-4-gerer-les-depots-github-a-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 4 – Gérer les dépôts GitHub à distance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 3 - Introduction au PowerShell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fiche procédure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Fiche-proc%C3%A9dure/PowerShell-Situation-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure – Gérer les Droits des utilisateurs sur un dossier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Fiche-proc%C3%A9dure/RDP-Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure protocole RDP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Fiche-proc%C3%A9dure/SSH-Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure protocole SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bloc2 Exploitation des services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bloc2 Exploitation des services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité 0 : Mise en place de l’infrastructure réseau des agences de l’entreprise CUB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité 2   Mise en place d'un service WEB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Activité 2   Mise en place d'un service WEB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20-%20Mise%20en%20place%20d%27un%20service%20WEB/I%20-%20Serveur%20LAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I - Serveur LAMP sous Debian 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20-%20Mise%20en%20place%20d%27un%20service%20WEB/II%20-%20Mise%20en%20place%20VHost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    II - Mise en place des hôtes virtuels Apache (VirtualHost)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20-%20Mise%20en%20place%20d%27un%20service%20WEB/III%20-%20Configuration%20Wordpress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III - Installation et configuration de WordPress pour www0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20-%20Mise%20en%20place%20d%27un%20service%20WEB/IV%20-%20Recuperation%20site%20via%20GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV - Récupération d’un site depuis un dépôt git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20-%20Mise%20en%20place%20d%27un%20service%20WEB/V%20-%20Authentification%20plus%20filtrage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V - Ajouter une authentification à l’accès du « scanner0 » + filtrage pour autoriser que le VLAN Admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20-%20Mise%20en%20place%20d%27un%20service%20WEB/VI%20-%20Fichier%20de%20zone%20DNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VI - Configuration DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité1 : Mise en place de serveurs DNS au sein de l’entreprise CUB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Activité1 : Mise en place de serveurs DNS au sein de l’entreprise CUB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A91%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/I%20Serveur%20DNS%20r%C3%A9cursif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I - Serveur DNS récursif
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A91%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/II%20Serveur%20DNS%20ma%C3%AEtre%20faisant%20autorit%C3%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    II - Serveur DNS maître faisant autorité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A91%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/III%20Serveur%20DNS%20esclave%20faisant%20autorit%C3%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III - Serveur DNS esclave faisant autorité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A91%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/IV%20D%C3%A9l%C3%A9gation%20de%20zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV - Délégation de zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bloc3 Cybersécurité
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bloc3 Cybersécurité
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc3-Cybers%C3%A9curit%C3%A9/Le-Bastion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation du service BASTION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc3-Cybers%C3%A9curit%C3%A9/Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 1 : phase d’analyse préalable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc3-Cybers%C3%A9curit%C3%A9/Situation-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 2 : Premiers paramétrage d'un pare-feu sur un site de l'entreprise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc3-Cybers%C3%A9curit%C3%A9/Situation-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 3 : Routage et NAT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc3-Cybers%C3%A9curit%C3%A9/Situation-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 4 : Crypthographie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adressage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adressage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-logique-agence-frankfur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schéma logique – Agence Frankfur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-tracert-agence-frankfurt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet tracert - Agence Frankfurt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1-installation-de-lenvironnement-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 – Installation de l’environnement GIT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2-initialisation-de-lenvironnement-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 - Initialisation de l’environnement Git :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3-gerer-les-versions-commits-en-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 – Gérer les versions (commits) en local
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-4-gerer-les-depots-github-a-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 4 – Gérer les dépôts GitHub à distance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="situation-2-mise-en-place-et-decouverte-dun-environnement-de-developpement-git">Situation 2 - Mise en place et découverte d’un environnement de développement GIT</h1>
+<p><img alt="" src="../../../media/logo-cub.png" /></p>
+<h2 id="prerequis">Prérequis</h2>
+<p><img alt="" src="../../../media/schema-logique-cub.png" /></p>
+<p><em>Ducumentation en ligne : <a href="https://cubdocumentation.sioplc.fr">https://cubdocumentation.sioplc.fr</a></em>
+<br></p>
+<h2 id="adressage">Adressage</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Service</strong></th>
+<th><strong>Nombre d’hôtes</strong></th>
+<th><strong>Adresse réseau</strong></th>
+<th><strong>Masque de sous-réseau</strong></th>
+<th><strong>Adresse de diffusion</strong></th>
+<th><strong>Description VLAN</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Production</td>
+<td>120</td>
+<td>192.168.6.0</td>
+<td>255.255.255.128</td>
+<td>192.168.6.127</td>
+<td>VLAN 56</td>
+</tr>
+<tr>
+<td>Client 1</td>
+<td>32</td>
+<td>192.168.6.128</td>
+<td>255.255.255.192</td>
+<td>192.168.6.191</td>
+<td>VLAN 10</td>
+</tr>
+<tr>
+<td>Administration systèmes et réseaux</td>
+<td>6</td>
+<td>192.168.6.192</td>
+<td>255.255.255.240</td>
+<td>192.168.6.207</td>
+<td>VLAN 20</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="schema-logique-agence-frankfur">Schéma logique – Agence Frankfur</h2>
+<p><img alt="" src="../../../media/bloc2/ExploitationServ/Activite0-1.png" /></p>
+<hr />
+<h2 id="packet-tracert-agence-frankfurt">Packet tracert - Agence Frankfurt</h2>
+<p><br></p>
+<p><img alt="" src="../../../media/packet-tracert-v1.jpg" />
+<br></p>
+<div style="text-align:center; margin-top:20px;">
+  <a href="https://drive.google.com/file/d/1L7Gp52YpPjjRhFdp9gp4L1sGORqAoCEK/view?usp=share_link" 
+     style="display:inline-block;
+            background:#e7e7e9;
+            color:#0096FF;
+            padding:11px 25px;
+            border-radius:10px;
+            text-decoration:none;
+            font-weight:50;
+            box-shadow:0 0 12px rgba(0,0,0,0.5);
+            transition:all 0.3s ease;"
+     onmouseover="this.style.background='#dcdce0'; this.style.color='#003d80';"
+     onmouseout="this.style.background='#e7e7e9'; this.style.color='#0096FF';">
+     🔗 Cliquer pour télécherger le paket tracert
+  </a>
+</div>
+<p><br></p>
+<hr />
+<h2 id="partie-1-installation-de-lenvironnement-git">Partie 1 – Installation de l’environnement GIT</h2>
+<ol>
+<li>Installer la version Windows de Git sur votre serveur (Git Bash, Git GUI, Git CMD)</li>
+<li>Aller dans Git Bash et tester une première commande « <strong>git version</strong> »</li>
+<li>Créer un dossier par le Git Bash sur la racine de votre disque locale que vous nommez « <strong>git_cub</strong> ». Celui-ci contiendra l’ensemble de vos dépôts (ou Repositories en anglais)</li>
+</ol>
+<h2 id="partie-2-initialisation-de-lenvironnement-git">Partie 2 - Initialisation de l’environnement Git<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> :</h2>
+<p><strong>Question 5 : Préparer la configuration initiale de Git en local qui sera conservée pour tous vos projets :</strong></p>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-1.png" /></p>
+<p><strong>Question 6 : Initialiser l'environnement Git local pour un dépôt (répositorie) :</strong></p>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-2.png" />
+<img alt="" src="../../../media/bloc2/AdminSys/Situation2-3.png" /></p>
+<h2 id="partie-3-gerer-les-versions-commits-en-local">Partie 3 – Gérer les versions (commits) en local</h2>
+<p><strong>Question 7 : Créer le premier <code>scripto.bat</code> en batch à déposer dans le dossier <code>premierdepot</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nano<span class="w"> </span>script0
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-4.png" /></p>
+<p><strong>Question 8 : Valider la première version du script dans une zone tampon (index) : <code>git add .</code> ou <code>git add --patch script0.bat</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-5.png" /></p>
+<p><strong>Question 9 : Vérifier le status de votre dépôt : <code>git status</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-6.png" /></p>
+<p><strong>Question 10 : Réaliser la première version (commit) de votre dépôt : <code>git commit -m « mon premier commit »</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span>«<span class="w"> </span>mon<span class="w"> </span>premier<span class="w"> </span>commit<span class="w"> </span>»
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-7.png" /></p>
+<p><strong>Question 11 : Vérifier le status à nouveau de votre dépôt : <code>git status</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-8.png" /></p>
+<p><strong>Question 12 : Lister les versions (commits) de votre dépôt : <code>git log</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>log
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-9.png" /></p>
+<p><strong>Question 13 : Réaliser et enregistrer une modification du script :</strong></p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>nano<span class="w"> </span>script0
+</span></code></pre></div>
+<img alt="" src="../../../media/bloc2/AdminSys/Situation2-10.png" /></p>
+<p><strong>Question 14 : Valider la deuxième version du script : <code>git add .</code></strong> ou <strong><code>git add --patch script0.bat</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-11.png" /></p>
+<p><strong>Question 15 : Vérifier le status de votre dépôt : <code>git status</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-12.png" /></p>
+<p><strong>Question 16 : Réaliser la deuxième version (commit) de votre dépôt : <code>git commit -m « mon deuxième commit »</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span>«<span class="w"> </span>mon<span class="w"> </span>deuxième<span class="w"> </span>commit<span class="w"> </span>»
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-13.png" /></p>
+<p><strong>Question 17 : Vérifier le status à nouveau de votre dépôt : <code>git status</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-14.png" /></p>
+<p><strong>Question 18 : Lister les versions (commits) de votre dépôt : <code>git log</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>log
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-15.png" /></p>
+<p><strong>Question 19 : Revenir à la première version du script : <code>git log –oneline</code>, puis <code>git checkout ab389bb</code> (à adapter en fonction de vos logs)</strong></p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>log<span class="w"> </span>–oneline
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>ab389bb
+</span></code></pre></div></p>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-16.png" />
+<img alt="" src="../../../media/bloc2/AdminSys/Situation2-17.png" /></p>
+<p><strong>Question 20 : Vérifier que le contenu du script correspond bien à votre première version</strong></p>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-18.png" /></p>
+<p><strong>Question 21 : Revenir à la dernière version du script : <code>git checkout master</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>master
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-19.png" /></p>
+<p><strong>Question 22 : Lister les versions (commits) de votre dépôt : <code>git log</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>log
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-20.png" /></p>
+<h2 id="partie-4-gerer-les-depots-github-a-distance">Partie 4 – Gérer les dépôts GitHub à distance</h2>
+<p><strong>Question 23 : Revenir sur votre compte GitHub et créer un nouveau dépôt <code>« premierdépotgithub »</code></strong></p>
+<p>Sur GitHub, cliquez sur New repository et nomme-le "<em>premierdepotgithub</em>"</p>
+<p>Url : <a href="https://github.com/estebantouzet/premierdepotgithub.git">https://github.com/estebantouzet/premierdepotgithub.git</a></p>
+<p><strong>Question 24 : Cloner ce nouveau dépôt vers votre machine en local dans le dossier « git_cub » : <code>git clone lien https de github pour le dépôt</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/estebantouzet/premierdepotgithub.git
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-21.png" /></p>
+<p><strong>Question 25 : Vérifier le contenu du nouveau dossier sur votre machine « <code>premierdépotgithub</code> »</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>premierdepot
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>ls
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-22.png" /></p>
+<p><strong>Question 26 : Copier le <code>script0.bat</code> vers ce nouveau dossier</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/EstebanTOUZET/premierdepotgithub.git
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-23.png" /></p>
+<p><strong>Question 27 : Vérifier le status à nouveau de votre dépôt : <code>git status</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-24.png" /></p>
+<p><strong>Question 28 : Réaliser la première version (commit) de votre dépôt : <code>git commit -m « mon deuxième commit sur github »</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span>«<span class="w"> </span>mon<span class="w"> </span>deuxième<span class="w"> </span>commit<span class="w"> </span>sur<span class="w"> </span>github<span class="w"> </span>»
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-25.png" /></p>
+<p><strong>Question 29 : Vérifier le status à nouveau de votre dépôt : <code>git status</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-26.png" /></p>
+<p><strong>Question 30 : Pousser et valider le contenu de votre dépôt local vers le dépôt distant : <code>git push -u origin main</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-27.png" />
+<img alt="" src="../../../media/bloc2/AdminSys/Situation2-28.png" /></p>
+<p><strong>Question 31 : Réaliser la deuxième version (commit) de votre dépôt : <code>git commit-m « mon deuxième commit sur github »</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>git<span class="w"> </span>commit-m<span class="w"> </span>«<span class="w"> </span>mon<span class="w"> </span>deuxième<span class="w"> </span>commit<span class="w"> </span>sur<span class="w"> </span>github<span class="w"> </span>»
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-29.png" /></p>
+<p><strong>Question 32 : Vérifier le status à nouveau de votre dépôt : <code>git status</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>git<span class="w"> </span>status
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-30.png" /></p>
+<p><strong>Question 33 : Pousser et valider le contenu de votre dépôt local vers le dépôt distant : <code>git push -u origin main</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-31.png" /></p>
+<p><strong>Question 34 : Vérifier le contenu de votre dépôt distant sur le site de github</strong></p>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-32.png" /></p>
+<h2 id="annexe">Annexe</h2>
+<p><img alt="" src="../../../media/bloc2/AdminSys/Situation2-33.png" /></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Un <strong>environnement Git</strong> désigne l’ensemble des outils, configurations et dépôts permettant de gérer le <strong>versionnement du code ou des fichiers</strong> à l’aide de Git.  Il comprend généralement un <strong>dépôt local</strong> (sur la machine de l’utilisateur) et un <strong>dépôt distant</strong> (hébergé sur une plateforme comme GitHub, GitLab ou Bitbucket).<br />
+Cet environnement permet de suivre l’historique des modifications, de collaborer avec d’autres utilisateurs, de revenir à des versions précédentes et de gérer différentes branches d’un projet.<br><br />
+Sous Windows, il peut être configuré via <strong>Git Bash</strong> ou un client graphique comme <strong>GitHub Desktop</strong>, tout en s’appuyant sur <strong>OpenSSH</strong> pour les connexions sécurisées.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../Situation-1/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Situation 1 - Préparation de la maquette et premiers paramétrages du serveur Windows2019">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Situation 1 - Préparation de la maquette et premiers paramétrages du serveur Windows2019
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Situation-3/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Situation 3 - Introduction au PowerShell">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Situation 3 - Introduction au PowerShell
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      copyright par moi même Esteban TOUZET :)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
