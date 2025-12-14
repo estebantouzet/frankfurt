@@ -14,11 +14,11 @@ theme:
 
 palette:
   - scheme: default
-    primary: blue grey
-    accent: blue grey
+    primary: grey
+    accent: grey
   - scheme: slate
-    primary: indigo
-    accent: indigo
+    primary: grey
+    accent: grey
     toggle:
       icon: material/weather-night
       name: Basculer en mode sombre
