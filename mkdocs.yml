@@ -12,16 +12,16 @@ theme:
     - navigation.footer
     - content.code.copy
 
-palette:
-  - scheme: default
-    primary: grey
-    accent: grey
-  - scheme: slate
-    primary: grey
-    accent: grey
-    toggle:
-      icon: material/weather-night
-      name: Basculer en mode sombre
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: blue grey
+    - scheme: slate
+      primary: blue grey
+      accent: blue grey
+      toggle:
+        icon: material/weather-night
+        name: Basculer en mode sombre
 
 markdown_extensions:
   - admonition
