@@ -7,9 +7,21 @@ theme:
   logo: ./media/logo.png
   favicon: ./media/favicon.png
   language: fr
+
   features:
     - navigation.footer
     - content.code.copy
+
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Basculer en mode sombre
 
 markdown_extensions:
   - admonition
@@ -18,17 +30,8 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.details
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
+  - pymdownx.superfences
+  - pymdownx.highlight
   - pymdownx.tabbed:
       alternate_style: true
 
