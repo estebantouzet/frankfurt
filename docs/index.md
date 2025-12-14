@@ -96,7 +96,7 @@ Chaque **Service Informatique de Proximité (SIP)** – dont celui de Frankfurt 
 
 <div style="text-align: center; margin-top: 2em;">
   <em>Projet réalisé par l’agence <strong>Frankfurt</strong> – BTS SIO SISR</em><br>
-  <em>Esteban TOUZET</em><br>
+  <em>Esteban TOUZET & Joris TEXIER</em><br>
 </div>
 
 
