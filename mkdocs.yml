@@ -12,16 +12,16 @@ theme:
     - navigation.footer
     - content.code.copy
 
-  palette:
-    - scheme: default
-      primary: teal
-      accent: teal
-    - scheme: slate
-      primary: teal
-      accent: teal
-      toggle:
-        icon: material/weather-night
-        name: Basculer en mode sombre
+palette:
+  - scheme: default
+    primary: indigo
+    accent: indigo
+  - scheme: slate
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/weather-night
+      name: Basculer en mode sombre
 
 markdown_extensions:
   - admonition
