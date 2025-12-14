@@ -14,8 +14,8 @@ theme:
 
 palette:
   - scheme: default
-    primary: blue gray
-    accent: blue gray
+    primary: blue grey
+    accent: blue grey
   - scheme: slate
     primary: indigo
     accent: indigo
