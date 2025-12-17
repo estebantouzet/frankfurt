@@ -73,6 +73,52 @@ Chaque **Service Informatique de Proximité (SIP)** – dont celui de Frankfurt 
 | **Client 1**                      | Réseau réservé aux postes clients internes.  | VLAN 10     | 16 hôtes                    |
 | **Administration systèmes & réseaux** | Réseau d’administration pour la gestion des équipements et serveurs. | VLAN 20 | 3 hôtes                     |
 
+
+## Table de filtrage cisco 
+
+### Table de filtrage – VLAN Client
+
+| N° | Interface       | Sens   | IP source              | Port src | IP destination          | Port dest        | Protocole | Statut    | Action   |
+|----|-----------------|--------|------------------------|----------|--------------------------|------------------|-----------|-----------|----------|
+| 1  | 192.168.6.190   | Sortie | *                      | *        | *                        | *                | *         | *         | Autoriser |
+| 2  | 192.168.6.190   | Entrée | *                      | *        | *                        | *                | *         | Établie   | Autoriser |
+| 3  | 192.168.6.190   | Entrée | *                      | 68       | 255.255.255.255          | 67               | UDP       | Nouvelle  | Autoriser |
+| 4  | 192.168.6.190   | Entrée | 192.168.6.128/26       | *        | 192.168.6.10 / .11       | 53               | UDP       | Nouvelle  | Autoriser |
+| 5  | 192.168.6.190   | Entrée | 192.168.6.128/26       | *        | 192.168.6.0/25           | 22 / 3389        | TCP       | Nouvelle  | Bloquer   |
+| 6  | 192.168.6.190   | Entrée | 192.168.6.128/26       | *        | 192.168.6.1/.2/.110/.111 | *                | *         | Nouvelle  | Autoriser |
+| 7  | 192.168.6.190   | Entrée | 192.168.6.128/26       | *        | 192.168.6.192/28         | *                | *         | Nouvelle  | Bloquer   |
+| 8  | 192.168.6.190   | Entrée | 192.168.6.128/26       | *        | 192.168.6.0/25           | *                | *         | Nouvelle  | Bloquer   |
+| 9  | 192.168.6.190   | Entrée | 192.168.6.128/26       | *        | *                        | *                | *         | Nouvelle  | Autoriser |
+
+
+### Table de filtrage – VLAN Production
+
+| N° | Interface       | Sens   | IP source        | Port src | IP destination      | Port dest | Protocole | Statut   | Action   |
+|----|-----------------|--------|------------------|----------|---------------------|-----------|-----------|----------|----------|
+| 1  | 192.168.6.126   | Sortie | *                | *        | *                   | *         | *         | *        | Autoriser |
+| 2  | 192.168.6.126   | Entrée | *                | *        | *                   | *         | *         | Établie  | Autoriser |
+| 3  | 192.168.6.126   | Entrée | 192.168.6.0/25   | *        | 192.168.6.192/28    | *         | *         | Nouvelle | Bloquer   |
+| 4  | 192.168.6.126   | Entrée | 192.168.6.0/25   | *        | 192.168.6.128/26    | *         | *         | Nouvelle | Bloquer   |
+| 5  | 192.168.6.126   | Entrée | 192.168.6.0/25   | *        | *                   | *         | *         | Nouvelle | Autoriser |
+
+
+### Table de filtrage – VLAN Administration
+
+| N° | Interface       | Sens   | IP source          | Port src | IP destination        | Port dest | Protocole | Statut   | Action   |
+|----|-----------------|--------|--------------------|----------|-----------------------|-----------|-----------|----------|----------|
+| 1  | 192.168.6.206   | Sortie | *                  | *        | *                     | *         | *         | *        | Autoriser |
+| 2  | 192.168.6.206   | Entrée | *                  | *        | *                     | *         | *         | Établie  | Autoriser |
+| 3  | 192.168.6.206   | Entrée | 192.168.6.192/28   | -        | 192.168.6.0/25, .128/26 | -       | ICMP      | Nouvelle | Autoriser |
+| 4  | 192.168.6.206   | Entrée | 192.168.6.192/28   | *        | 192.168.6.128/26      | *         | *         | Nouvelle | Autoriser |
+| 5  | 192.168.6.206   | Entrée | 192.168.6.192/28   | *        | 192.168.6.0           | 22 / 3389 | TCP       | Nouvelle | Bloquer   |
+| 6  | 192.168.6.206   | Entrée | 192.168.6.192/28   | *        | 192.168.6.1/.2/.110/.111 | *     | *         | Nouvelle | Autoriser |
+| 7  | 192.168.6.206   | Entrée | 192.168.6.192/28   | *        | 192.168.6.10 / .11    | 53        | UDP       | Nouvelle | Bloquer   |
+| 8  | 192.168.6.206   | Entrée | 192.168.6.192/28   | *        | 192.168.6.125         | 443       | TCP       | Nouvelle | Bloquer   |
+| 9  | 192.168.6.206   | Entrée | 192.168.6.192/28   | *        | 192.168.6.0/25        | *         | *         | Nouvelle | Autoriser |
+| 10 | 192.168.6.206   | Entrée | 192.168.6.192/28   | *        | *                     | *         | *         | Nouvelle | Autoriser |
+
+
+
 > **Remarque :**  
 > L’évolution du réseau est un élément primordial.  
 > Le plan d’adressage doit permettre d’accueillir **au moins le double d’équipements** par rapport au recensement initial afin d’éviter toute saturation future.
