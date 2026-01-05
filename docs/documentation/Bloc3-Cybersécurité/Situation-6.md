@@ -110,20 +110,34 @@
 ## 2. Proposer une amélioration de la proposition de filtrage initiale.
 
 **Note :**
-**Analyse préalable de la table de filtrage proposée par le DSL.**
-Règle 1 : Les sous-réseaux Production et Clients n'ont pas à utiliser le protocole SSH.
-Règle 2 : Le VLAN d'Administration a accès à n'importe quelle adresse IP avec tout type de protocole. Bien que ce VLAN dispose d'autorisations plus amples, cela n'est pas pertinent. Les bonnes pratiques recommandent fortement d'interdire l'accès à Internet au poste d'administration
-Règle 3 : OK
-Règle 4 : Il manque une règle de protection de la passerelle (ensemble des interfaces du pare-feu).
-Seul le sous-réseau Administration peut interroger sa passerelle et donc aller sur la page Web du pare-feu Stormshield
-Règle 5 : OK
-Règle 6 : OK
+<span style="color: green;">
 
-**Il manque une règle de blocage par défaut explicite.**
+<strong>Analyse préalable de la table de filtrage proposée par le DSL.</strong>  
 
-NB : La règle de blocage par défaut explicite avec journalisation préconisée par l'ANSSI est sujette à interprétation. L'entreprise Stormshield recommande généralement d'éviter cette règle car mal configurée, elle peut générer un bruit conséquent à l'intérieur des fichiers journaux et les rendre ainsi difficilement exploitables.
+Règle 1 : Les sous-réseaux Production et Clients n'ont pas à utiliser le protocole SSH.  
 
-Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués générant du bruit inutile n'est pas journalisé au préalable (NETBIOS par exemple). C'est d'ailleurs ce que recommande clairement l'ANSSI dans son guide de configuration
+Règle 2 : Le VLAN d'Administration a accès à n'importe quelle adresse IP avec tout type de protocole. Bien que ce VLAN dispose d'autorisations plus amples, cela n'est pas pertinent. Les bonnes pratiques recommandent fortement d'interdire l'accès à Internet au poste d'administration.  
+
+Règle 3 : OK  
+
+Règle 4 : Il manque une règle de protection de la passerelle (ensemble des interfaces du pare-feu).  
+Seul le sous-réseau Administration peut interroger sa passerelle et donc aller sur la page Web du pare-feu Stormshield.  
+
+Règle 5 : OK  
+
+Règle 6 : OK  
+
+<strong>Il manque une règle de blocage par défaut explicite.</strong>  
+
+
+NB : La règle de blocage par défaut explicite avec journalisation préconisée par l'ANSSI est sujette à interprétation.  
+L'entreprise Stormshield recommande généralement d'éviter cette règle car mal configurée, elle peut générer un bruit conséquent à l'intérieur des fichiers journaux et les rendre ainsi difficilement exploitables.  
+
+Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués générant du bruit inutile n'est pas journalisé au préalable (NETBIOS par exemple).  
+C'est d'ailleurs ce que recommande clairement l'ANSSI dans son guide de configuration.
+
+</span>
+
 
 <table border="1" cellpadding="6" cellspacing="0" width="100%">
   <thead>
