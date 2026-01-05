@@ -313,8 +313,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td></td>
-      <td>192.168.66.60</td>
+      <td>10 - Règle 8</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.36.0.0/18</td>
       <td>*</td>
@@ -330,7 +330,19 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Entrer</td>
       <td>Internet</td>
       <td>*</td>
-      <td>192.36.6.10 / 192.36.6.11</td>
+      <td>192.36.6.10</td>
+      <td>53</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>192.168.66.60</td>
+      <td>Entrer</td>
+      <td>Internet</td>
+      <td>*</td>
+      <td>192.36.6.11</td>
       <td>53</td>
       <td>TCP</td>
       <td>Nouvelle</td>
@@ -347,6 +359,47 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>TCP</td>
       <td>Nouvelle</td>
       <td>Autoriser</td>
+    </tr>
+
+    <!-- Reponses aux Questions -->
+    <tr>
+      <td colspan="10"><strong>Question A à C (situation 6)</strong></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Entrer</td>
+      <td>Rfc5735</td>
+      <td>*</td>
+      <td>*</td>
+      <td>*</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Refuser</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>WAN (Internet)</td>
+      <td>Entrer</td>
+      <td>Internet / IP rep : botnet, malware</td>
+      <td>*</td>
+      <td>192.36.0.0</td>
+      <td>80, 53</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Refuser</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>192.168.66.254</td>
+      <td>Entrer</td>
+      <td>192.168.6.0/24</td>
+      <td>*</td>
+      <td>Internet / IP rep : botnet, malware</td>
+      <td>*</td>
+      <td>*</td>
+      <td>Nouvelle</td>
+      <td>Refuser</td>
     </tr>
 
     <!-- Section 6 -->
