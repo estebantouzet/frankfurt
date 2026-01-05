@@ -421,3 +421,5 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
 
   </tbody>
 </table>
+
+![](../../media/bloc3/Situation6-1.png)
