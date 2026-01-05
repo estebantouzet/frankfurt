@@ -48,7 +48,6 @@
 | 1 | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | 192.36.6.20 | 80, 443 | TCP | Nouvelle | Autoriser |
 |   | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | 192.36.6.20 | 22 | TCP | Nouvelle | Autoriser |
 
----
 
 ### Règle 2
 
@@ -56,7 +55,6 @@
 |---|----------|------|----------|----------|--------|-----------|-----------|--------|--------|
 | 2 | 192.168.66.254 | Entrer | 192.168.6.192/28 | * | * | * | * | Nouvelle | Autoriser |
 
----
 
 ### Règle 3
 
@@ -64,7 +62,6 @@
 |---|----------|------|----------|----------|--------|-----------|-----------|--------|--------|
 | 3 | 192.168.66.254 | Entrer | 192.168.6.0/25 | * | * | 123 | UDP | Nouvelle | Autoriser |
 
----
 
 ### Règle 4
 
@@ -72,7 +69,6 @@
 |---|----------|------|----------|----------|--------|-----------|-----------|--------|--------|
 | 4 | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | 192.168.66.254 | 443 | TCP | Nouvelle | Autoriser |
 
----
 
 ### Règle 5
 
@@ -80,7 +76,6 @@
 |---|----------|------|----------|--------|------|-----------|--------|--------|
 | 5 | 192.168.66.254 | Entrer | 192.168.6.10 / .11 / .12 | * | 53 | DNS | Nouvelle | Autoriser |
 
----
 
 ### Règle 6
 
@@ -88,7 +83,6 @@
 |---|----------|------|----------|--------|------|-----------|--------|--------|
 | 6 | 192.168.66.254 | Entrer | 192.168.6.0/24 | 192.36.0.0/18 | 80,443 | TCP | Nouvelle | Autoriser |
 
----
 
 ### Règle 7
 
@@ -96,7 +90,6 @@
 |---|----------|------|----------|--------|-------|-----------|--------|--------|
 | 7 | 192.168.66.254 | Entrer | 192.36.0.0/18 | 192.36.6.20/24 | 80,443,20,21 | TCP | Nouvelle | Autoriser |
 
----
 
 ### Règle 8
 
@@ -104,7 +97,6 @@
 |---|----------|------|----------|--------|------|-----------|--------|--------|
 | 8 | 192.168.66.254 | Entrer | 192.36.0.0/18 | 192.36.6.10 / .11 | 53 | TCP, UDP | Nouvelle | Autoriser |
 
----
 
 ### Règle 9 – Accès Internet
 
@@ -112,7 +104,6 @@
 |---|----------|------|----------|--------|-------|-----------|--------|--------|
 | 9 | 192.168.66.254 | Entrer | 192.168.6.0/24 | Internet | 80,443 | TCP | Nouvelle | Autoriser |
 
----
 
 
 
@@ -134,26 +125,246 @@ NB : La règle de blocage par défaut explicite avec journalisation préconisée
 
 Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués générant du bruit inutile n'est pas journalisé au préalable (NETBIOS par exemple). C'est d'ailleurs ce que recommande clairement l'ANSSI dans son guide de configuration
 
-| N° | Interface | Sens | @IP src | Port src | @IP dest | Port dest | Protocole | Statut | Action |
-|----|----------|------|---------|----------|----------|-----------|-----------|--------|--------|
-| **Section 1 – Règles d’autorisation à destination du pare-feu** |  |  |  |  |  |  |  |  |  |
-| 6 | Règle 4 | 192.168.66.254 | Entrer | 192.168.6.192/28 | * | 192.168.66.254 | 443 | TCP | Nouvelle | Autoriser |
-| **Section 3 – Règles de protection du pare-feu** |  |  |  |  |  |  |  |  |  |
-| 3 | New line | 192.36.253.60 | Entrer | * | * | 192.36.253.60 | * | * | Nouvelle | Bloquer |
-| 6 | Règle 4 | 192.168.66.254 | Entrer | * | * | 192.168.66.254 | * | * | Nouvelle | Bloquer |
-| **Section 4 – Règles d’autorisation des flux métiers** |  |  |  |  |  |  |  |  |  |
-| 2 | Règle 1 | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | 192.36.6.20 | 80,443 | TCP | Nouvelle | Autoriser |
-| 3 | Règle 1 | 192.168.66.254 | Entrer | 192.168.6.192/28 | * | 192.36.6.20 | 22 | TCP | Nouvelle | Autoriser |
-| 4 | Règle 2 | 192.168.66.254 | Entrer | 192.168.6.192/28 | * | * | 80,443 | TCP | Nouvelle | Bloquer |
-| 5 | Règle 3 | 192.168.66.254 | Entrer | 192.168.6.0/25 | * | * | 123 | UDP | Nouvelle | Autoriser |
-| 7 | Règle 5 | 192.168.66.254 | Entrer | 192.168.6.10 | * | * | 53 | DNS | Nouvelle | Autoriser |
-|   | Règle 5 | 192.168.66.254 | Entrer | 192.168.6.11 | * | * | 53 | DNS | Nouvelle | Autoriser |
-|   | Règle 5 | 192.168.66.254 | Entrer | 192.168.6.12 | * | * | 53 | DNS | Nouvelle | Autoriser |
-| 8 | Règle 6 | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | 192.36.0.0/18 | 80,443 | TCP | Nouvelle | Autoriser |
-| 9 | Règle 7 | 192.168.66.254 | Entrer | 192.36.0.0/18 | * | 192.36.6.20/24 | 80,443,20,21 | TCP | Nouvelle | Autoriser |
-| 10 | Règle 8 | 192.168.66.254 | Entrer | 192.36.0.0/18 | * | 192.36.6.10 | 53 | TCP,UDP | Nouvelle | Autoriser |
-|    | Règle 8 | 192.168.66.254 | Entrer | 192.36.0.0/18 | * | 192.36.6.11 | 53 | TCP,UDP | Nouvelle | Autoriser |
-|    | New line | 192.36.253.60 | Entrer | Internet | * | 192.36.6.10 | 53 | TCP | Nouvelle | Autoriser |
-| 11 | Règle 9 | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | Internet | 80,443 | TCP | Nouvelle | Autoriser |
-| **Section 6 – Règle d’interdiction finale** |  |  |  |  |  |  |  |  |  |
-| 9 | * | Entrer | * | * | * | * | * | Nouvelle | Bloquer |
+<table border="1" cellpadding="6" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>N°</th>
+      <th>Interface</th>
+      <th>Sens</th>
+      <th>@IP src</th>
+      <th>Port src</th>
+      <th>@IP dest</th>
+      <th>Port dest</th>
+      <th>Protocole</th>
+      <th>Statut</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- Section 1 -->
+    <tr>
+      <td colspan="10"><strong>Section 1 – Règles d’autorisation à destination du pare-feu</strong></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Règle 4</td>
+      <td>Entrer</td>
+      <td>192.168.6.192/28</td>
+      <td>*</td>
+      <td>192.168.66.254</td>
+      <td>443</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+
+    <!-- Section 3 -->
+    <tr>
+      <td colspan="10"><strong>Section 3 – Règles de protection du pare-feu</strong></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>New line</td>
+      <td>Entrer</td>
+      <td>*</td>
+      <td>*</td>
+      <td>192.36.253.60</td>
+      <td>*</td>
+      <td>*</td>
+      <td>Nouvelle</td>
+      <td>Bloquer</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Règle 4</td>
+      <td>Entrer</td>
+      <td>*</td>
+      <td>*</td>
+      <td>192.168.66.254</td>
+      <td>*</td>
+      <td>*</td>
+      <td>Nouvelle</td>
+      <td>Bloquer</td>
+    </tr>
+
+    <!-- Section 4 -->
+    <tr>
+      <td colspan="10"><strong>Section 4 – Règles d’autorisation des flux métiers</strong></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Règle 1</td>
+      <td>Entrer</td>
+      <td>192.168.6.0/24</td>
+      <td>*</td>
+      <td>192.36.6.20</td>
+      <td>80,443</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Règle 1</td>
+      <td>Entrer</td>
+      <td>192.168.6.192/28</td>
+      <td>*</td>
+      <td>192.36.6.20</td>
+      <td>22</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Règle 2</td>
+      <td>Entrer</td>
+      <td>192.168.6.192/28</td>
+      <td>*</td>
+      <td>*</td>
+      <td>80,443</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Bloquer</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Règle 3</td>
+      <td>Entrer</td>
+      <td>192.168.6.0/25</td>
+      <td>*</td>
+      <td>*</td>
+      <td>123</td>
+      <td>UDP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Règle 5</td>
+      <td>Entrer</td>
+      <td>192.168.6.10</td>
+      <td>*</td>
+      <td>*</td>
+      <td>53</td>
+      <td>DNS</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Règle 5</td>
+      <td>Entrer</td>
+      <td>192.168.6.11</td>
+      <td>*</td>
+      <td>*</td>
+      <td>53</td>
+      <td>DNS</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Règle 5</td>
+      <td>Entrer</td>
+      <td>192.168.6.12</td>
+      <td>*</td>
+      <td>*</td>
+      <td>53</td>
+      <td>DNS</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Règle 6</td>
+      <td>Entrer</td>
+      <td>192.168.6.0/24</td>
+      <td>*</td>
+      <td>192.36.0.0/18</td>
+      <td>80,443</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Règle 7</td>
+      <td>Entrer</td>
+      <td>192.36.0.0/18</td>
+      <td>*</td>
+      <td>192.36.6.20/24</td>
+      <td>80,443,20,21</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Règle 8</td>
+      <td>Entrer</td>
+      <td>192.36.0.0/18</td>
+      <td>*</td>
+      <td>192.36.6.10</td>
+      <td>53</td>
+      <td>TCP, UDP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Règle 8</td>
+      <td>Entrer</td>
+      <td>192.36.0.0/18</td>
+      <td>*</td>
+      <td>192.36.6.11</td>
+      <td>53</td>
+      <td>TCP, UDP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>New line</td>
+      <td>Entrer</td>
+      <td>Internet</td>
+      <td>*</td>
+      <td>192.36.6.10 / 192.36.6.11</td>
+      <td>53</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Règle 9</td>
+      <td>Entrer</td>
+      <td>192.168.6.0/24</td>
+      <td>*</td>
+      <td>Internet</td>
+      <td>80,443</td>
+      <td>TCP</td>
+      <td>Nouvelle</td>
+      <td>Autoriser</td>
+    </tr>
+
+    <!-- Section 6 -->
+    <tr>
+      <td colspan="10"><strong>Section 6 – Règle d’interdiction finale</strong></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>*</td>
+      <td>Entrer</td>
+      <td>*</td>
+      <td>*</td>
+      <td>*</td>
+      <td>*</td>
+      <td>*</td>
+      <td>Nouvelle</td>
+      <td>Bloquer</td>
+    </tr>
+
+  </tbody>
+</table>
