@@ -41,7 +41,7 @@
 <br>
 
 ## 1. Création des règles de filtrage
-### Règle 1
+**Règle 1**
 
 | N° | Interface | Sens | IP source | Port source | IP destination | Port destination | Protocole | Statut | Action |
 |---|----------|------|----------|-------------|---------------|------------------|-----------|--------|--------|
@@ -49,56 +49,56 @@
 |   | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | 192.36.6.20 | 22 | TCP | Nouvelle | Autoriser |
 
 
-### Règle 2
+**Règle 2**
 
 | N° | Interface | Sens | IP source | Port src | IP dest | Port dest | Protocole | Statut | Action |
 |---|----------|------|----------|----------|--------|-----------|-----------|--------|--------|
 | 2 | 192.168.66.254 | Entrer | 192.168.6.192/28 | * | * | * | * | Nouvelle | Autoriser |
 
 
-### Règle 3
+**Règle 3**
 
 | N° | Interface | Sens | IP source | Port src | IP dest | Port dest | Protocole | Statut | Action |
 |---|----------|------|----------|----------|--------|-----------|-----------|--------|--------|
 | 3 | 192.168.66.254 | Entrer | 192.168.6.0/25 | * | * | 123 | UDP | Nouvelle | Autoriser |
 
 
-### Règle 4
+**Règle 4**
 
 | N° | Interface | Sens | IP source | Port src | IP dest | Port dest | Protocole | Statut | Action |
 |---|----------|------|----------|----------|--------|-----------|-----------|--------|--------|
 | 4 | 192.168.66.254 | Entrer | 192.168.6.0/24 | * | 192.168.66.254 | 443 | TCP | Nouvelle | Autoriser |
 
 
-### Règle 5
+**Règle 5**
 
 | N° | Interface | Sens | IP source | IP dest | Port | Protocole | Statut | Action |
 |---|----------|------|----------|--------|------|-----------|--------|--------|
 | 5 | 192.168.66.254 | Entrer | 192.168.6.10 / .11 / .12 | * | 53 | DNS | Nouvelle | Autoriser |
 
 
-### Règle 6
+**Règle 6**
 
 | N° | Interface | Sens | IP source | IP dest | Port | Protocole | Statut | Action |
 |---|----------|------|----------|--------|------|-----------|--------|--------|
 | 6 | 192.168.66.254 | Entrer | 192.168.6.0/24 | 192.36.0.0/18 | 80,443 | TCP | Nouvelle | Autoriser |
 
 
-### Règle 7
+**Règle 7**
 
 | N° | Interface | Sens | IP source | IP dest | Ports | Protocole | Statut | Action |
 |---|----------|------|----------|--------|-------|-----------|--------|--------|
 | 7 | 192.168.66.254 | Entrer | 192.36.0.0/18 | 192.36.6.20/24 | 80,443,20,21 | TCP | Nouvelle | Autoriser |
 
 
-### Règle 8
+**Règle 8**
 
 | N° | Interface | Sens | IP source | IP dest | Port | Protocole | Statut | Action |
 |---|----------|------|----------|--------|------|-----------|--------|--------|
 | 8 | 192.168.66.254 | Entrer | 192.36.0.0/18 | 192.36.6.10 / .11 | 53 | TCP, UDP | Nouvelle | Autoriser |
 
 
-### Règle 9 – Accès Internet
+**Règle 9**
 
 | N° | Interface | Sens | IP source | IP dest | Ports | Protocole | Statut | Action |
 |---|----------|------|----------|--------|-------|-----------|--------|--------|
@@ -147,8 +147,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td colspan="10"><strong>Section 1 – Règles d’autorisation à destination du pare-feu</strong></td>
     </tr>
     <tr>
-      <td>6</td>
-      <td>Règle 4</td>
+      <td>6 - Règle 4</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.192/28</td>
       <td>*</td>
@@ -164,8 +164,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td colspan="10"><strong>Section 3 – Règles de protection du pare-feu</strong></td>
     </tr>
     <tr>
-      <td>3</td>
-      <td>New line</td>
+      <td>3 - New line</td>
+      <td>192.36.253.60</td>
       <td>Entrer</td>
       <td>*</td>
       <td>*</td>
@@ -176,8 +176,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Bloquer</td>
     </tr>
     <tr>
-      <td>6</td>
-      <td>Règle 4</td>
+      <td>6 - Règle 4</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>*</td>
       <td>*</td>
@@ -193,8 +193,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td colspan="10"><strong>Section 4 – Règles d’autorisation des flux métiers</strong></td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>Règle 1</td>
+      <td>2 - Règle 1</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.0/24</td>
       <td>*</td>
@@ -205,8 +205,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td>3</td>
-      <td>Règle 1</td>
+      <td>3 - Règle 1</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.192/28</td>
       <td>*</td>
@@ -217,8 +217,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td>4</td>
-      <td>Règle 2</td>
+      <td>4 - Règle 2</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.192/28</td>
       <td>*</td>
@@ -229,8 +229,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Bloquer</td>
     </tr>
     <tr>
-      <td>5</td>
-      <td>Règle 3</td>
+      <td>5 - Règle 3</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.0/25</td>
       <td>*</td>
@@ -241,8 +241,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td>7</td>
-      <td>Règle 5</td>
+      <td>7 - Règle 5</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.10</td>
       <td>*</td>
@@ -253,8 +253,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td></td>
-      <td>Règle 5</td>
+      <td>7 - Règle 5</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.11</td>
       <td>*</td>
@@ -265,8 +265,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td></td>
-      <td>Règle 5</td>
+      <td>7 - Règle 5</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.12</td>
       <td>*</td>
@@ -277,8 +277,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td>8</td>
-      <td>Règle 6</td>
+      <td>8 - Règle 6</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.0/24</td>
       <td>*</td>
@@ -289,8 +289,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td>9</td>
-      <td>Règle 7</td>
+      <td>9 - Règle 7</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.36.0.0/18</td>
       <td>*</td>
@@ -301,8 +301,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td>10</td>
-      <td>Règle 8</td>
+      <td>10 - Règle 8</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.36.0.0/18</td>
       <td>*</td>
@@ -314,7 +314,7 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
     </tr>
     <tr>
       <td></td>
-      <td>Règle 8</td>
+      <td>192.168.66.60</td>
       <td>Entrer</td>
       <td>192.36.0.0/18</td>
       <td>*</td>
@@ -326,7 +326,7 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
     </tr>
     <tr>
       <td></td>
-      <td>New line</td>
+      <td>192.168.66.60</td>
       <td>Entrer</td>
       <td>Internet</td>
       <td>*</td>
@@ -337,8 +337,8 @@ Ainsi cette règle n'est pertinente que si l'ensemble des protocoles bloqués g�
       <td>Autoriser</td>
     </tr>
     <tr>
-      <td>11</td>
-      <td>Règle 9</td>
+      <td>11 - Règle 9</td>
+      <td>192.168.66.254</td>
       <td>Entrer</td>
       <td>192.168.6.0/24</td>
       <td>*</td>
