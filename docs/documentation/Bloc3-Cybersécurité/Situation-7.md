@@ -45,6 +45,7 @@
 Un **SIEM (Security Information and Event Management)** est une solution de sécurité qui permet de **centraliser, collecter, corréler et analyser les événements de sécurité** provenant de différentes sources du système d’information (serveurs, postes de travail, équipements réseau, applications, etc.).
 
 Dans un **SOC (Security Operations Center)**, le SIEM joue un rôle central :
+
 * il regroupe les journaux de sécurité de l’ensemble de l’infrastructure,
 * il détecte les anomalies, attaques ou comportements suspects grâce à des règles et des corrélations d’événements,
 * il génère des alertes contextualisées pour faciliter l’analyse,
