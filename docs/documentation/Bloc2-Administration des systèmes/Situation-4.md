@@ -179,6 +179,7 @@ Le mode doit uniquement passer de veille à Serveur de secours.
 ![](../../media/bloc2/AdminSys/Situation4-26.png)
 
 **Note :**
+
 **<u>Rechercher et rédiger une note sur les vulnérabilités avérées du service DHCP (Starvation et Rogue) et les contre-mesures envisageables :**</u>
 
 Le protocole DHCP (Dynamic Host Configuration Protocol) présente certaines vulnérabilités, car il ne comporte pas de mécanisme d’authentification entre le client et le serveur. Deux attaques principales exploitent cette faiblesse : la DHCP Starvation et le Rogue DHCP.
