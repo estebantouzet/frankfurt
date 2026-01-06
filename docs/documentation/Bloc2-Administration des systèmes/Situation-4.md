@@ -1,4 +1,4 @@
-# Situation 3 - Introduction au PowerShell
+# Situation 4 - Paramétrage et sécurisation du service DHCP
 
 
 ![](../../media/logo-cub.png)
@@ -66,10 +66,17 @@ ___
 
 ![](../../media/bloc2/AdminSys/Situation4-4.png)
 
+```bash
+Add-DhcpServerv4Scope -Name "VLAN 10" -StartRange 192.168.6.129 -EndRange 192.168.1.190 -SubnetMask 255.255.255.192
+```
+
 *Création de l’étendue vlan 20 :*
 
 ![](../../media/bloc2/AdminSys/Situation4-5.png)
 
+```bash
+Add-DhcpServerv4Scope -Name "VLAN20" -StartRange 192.168.6.193 -EndRange 192.168.1.206 -SubnetMask 255.255.255.240
+```
 
 ### Exclusion d’adresse 
 
