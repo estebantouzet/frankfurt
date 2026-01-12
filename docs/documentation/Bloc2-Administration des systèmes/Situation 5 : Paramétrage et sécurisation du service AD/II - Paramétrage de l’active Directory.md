@@ -94,9 +94,9 @@ Exemple avec production :
 ![](../../../media/bloc2/AdminSys/Situation5-22.png)
 
 Ajouter des membres aux groupes créés : 
--	M Balny et M Demoulière : groupe Production
--	Mme Ferreira : groupe Administration
--	Mme Caramigeas : groupe Clients 
+* M Balny et M Demoulière : groupe Production
+* Mme Ferreira : groupe Administration
+* Mme Caramigeas : groupe Clients 
 
 Exemple avec le groupe production : 
 
