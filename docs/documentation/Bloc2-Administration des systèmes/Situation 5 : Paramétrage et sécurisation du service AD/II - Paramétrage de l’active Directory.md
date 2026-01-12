@@ -52,6 +52,7 @@ ___
 ## Paramétrage de l’active Directory
 
 Création des unités d’organisation pour chaque salle du site : 
+
 * Salle001
 * Salle002
 * Salle003
@@ -71,11 +72,15 @@ Déplacer l’ordinateur "PosteA" dans l’unité d’organisation "Salle002"
 
 ![](../../../media/bloc2/AdminSys/Situation5-19.png)
 
-Créer dans le conteneur "Users" les utilisateurs suivant : 
-balny david : mdp ( à changer à la première connexion) : Provisoire_007
-demouliere quentin : mdp ( à changer à la première connexion) : Provisoire_007
-ferreira christèle : mdp ( à changer à la première connexion) : Provisoire_007
-caramigeas béatrice : mdp ( à changer à la première connexion) : Provisoire_007
+**Créer dans le conteneur "Users" les utilisateurs suivant :**
+
+* balny david : mdp ( à changer à la première connexion) : Provisoire_007
+
+* demouliere quentin : mdp ( à changer à la première connexion) : Provisoire_007
+
+* ferreira christèle : mdp ( à changer à la première connexion) : Provisoire_007
+
+* caramigeas béatrice : mdp ( à changer à la première connexion) : Provisoire_007
 
 ![](../../../media/bloc2/AdminSys/Situation5-20.png)
 
@@ -84,6 +89,7 @@ Exemple pour david balny :
 ![](../../../media/bloc2/AdminSys/Situation5-21.png)
 
 Créer les groupes suivants dans le conteneur "Users" (étendue : Globale ; Type : Sécurité) : 
+
 * Production 
 * Clients
 * Administration
@@ -94,6 +100,7 @@ Exemple avec production :
 ![](../../../media/bloc2/AdminSys/Situation5-22.png)
 
 Ajouter des membres aux groupes créés : 
+
 * M Balny et M Demoulière : groupe Production
 * Mme Ferreira : groupe Administration
 * Mme Caramigeas : groupe Clients 
