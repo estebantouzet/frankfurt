@@ -100,3 +100,4 @@ Ajouter des membres aux groupes créés :
 
 Exemple avec le groupe production : 
 
+![](../../../media/bloc2/AdminSys/Situation5-23.png)
