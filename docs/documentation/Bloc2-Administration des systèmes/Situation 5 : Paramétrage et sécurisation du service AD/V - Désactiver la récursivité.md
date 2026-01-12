@@ -1,11 +1,11 @@
 # V - Désactiver la récursivité
 
 
-![](../../media/logo-cub.png)
+![](../../../media/logo-cub.png)
 
 ## Prérequis
 
-![](../../media/schema-logique-cub.png)
+![](../../../media/schema-logique-cub.png)
 
 *Ducumentation en ligne : [https://cubdocumentation.sioplc.fr](https://cubdocumentation.sioplc.fr)*
 <br>
@@ -22,13 +22,13 @@ ___
 
 ## Schéma logique – Agence Frankfur
 
-![](../../media/bloc2/ExploitationServ/Activite0-1.png)
+![](../../../media/bloc2/ExploitationServ/Activite0-1.png)
 
 ___
 ## Packet tracert - Agence Frankfurt
 <br>
 
-![](../../media/packet-tracert-v1.jpg)
+![](../../../media/packet-tracert-v1.jpg)
 <br>
 
 <div style="text-align:center; margin-top:20px;">
@@ -48,3 +48,9 @@ ___
   </a>
 </div>
 <br>
+
+## Désactiver la récursivité
+
+![](../../../media/bloc2/AdminSys/Situation5-32.png)
+
+`Outils > DNS > Redirecteurs > Avancé`

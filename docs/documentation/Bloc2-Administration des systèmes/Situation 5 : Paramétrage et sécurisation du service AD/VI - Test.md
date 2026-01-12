@@ -48,3 +48,10 @@ ___
   </a>
 </div>
 <br>
+
+
+## Test
+
+![](../../../media/bloc2/AdminSys/Situation5-33.png)
+
+Le serveur primaire à créer une unité d'organisation qui a bien été répliquer sur le serveur secondaire 
