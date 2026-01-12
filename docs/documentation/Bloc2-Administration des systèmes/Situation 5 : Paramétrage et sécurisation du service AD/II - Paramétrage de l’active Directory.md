@@ -51,7 +51,7 @@ ___
 
 ## Paramétrage de l’active Directory
 
-Création des unités d’organisation pour chaque salle du site : 
+**Création des unités d’organisation pour chaque salle du site :** 
 
 * Salle001
 * Salle002
@@ -88,7 +88,7 @@ Exemple pour david balny :
 
 ![](../../../media/bloc2/AdminSys/Situation5-21.png)
 
-Créer les groupes suivants dans le conteneur "Users" (étendue : Globale ; Type : Sécurité) : 
+**Créer les groupes suivants dans le conteneur "Users" (étendue : Globale ; Type : Sécurité) :** 
 
 * Production 
 * Clients
@@ -99,7 +99,7 @@ Exemple avec production :
 
 ![](../../../media/bloc2/AdminSys/Situation5-22.png)
 
-Ajouter des membres aux groupes créés : 
+**Ajouter des membres aux groupes créés :** 
 
 * M Balny et M Demoulière : groupe Production
 * Mme Ferreira : groupe Administration
