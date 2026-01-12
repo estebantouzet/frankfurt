@@ -76,7 +76,8 @@ Sur cette étape intitulée « Sélectionner le serveur de destination », séle
 ### Étape 6 : Rôles de serveur
 
 ![](../../../media/bloc2/AdminSys/Situation5-4.png)
- 
+
+
 L'étape précédente vous mènera à la page suivante comme indiqué ci-dessous. Ici, vous verrez de nombreuses options avec une case de liste de contrôle carrée en regard d'elles. Comme vous pouvez le deviner, nous allons choisir « Services de domaine Active Directory ».
 
 ![](../../../media/bloc2/AdminSys/Situation5-5.png)
