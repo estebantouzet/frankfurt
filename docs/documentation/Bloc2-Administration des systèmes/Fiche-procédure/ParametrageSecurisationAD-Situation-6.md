@@ -1,4 +1,4 @@
-# 5. Paramétrage et sécurisation du service AD
+# Paramétrage et sécurisation du service AD
 
 **Commande de base :**
 
