@@ -1,0 +1,2658 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://estebantouzet.github.io/frankfurt/documentation/Bloc3-Cybers%C3%A9curit%C3%A9/Le-Bastion/">
+      
+      
+        <link rel="prev" href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/VI%20-%20Fichier%20de%20zone%20DNS/">
+      
+      
+        <link rel="next" href="../Situation-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../media/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Présentation du service BASTION - Le contexte CUB Frankfurt - Esteban TOUZET & Joris TEXIER</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#presentation-du-service-bastion" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Le contexte CUB Frankfurt - Esteban TOUZET &amp; Joris TEXIER" class="md-header__button md-logo" aria-label="Le contexte CUB Frankfurt - Esteban TOUZET & Joris TEXIER" data-md-component="logo">
+      
+  <img src="../../../media/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Le contexte CUB Frankfurt - Esteban TOUZET & Joris TEXIER
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Présentation du service BASTION
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey"  aria-label="Basculer en mode sombre"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Basculer en mode sombre" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Le contexte CUB Frankfurt - Esteban TOUZET &amp; Joris TEXIER" class="md-nav__button md-logo" aria-label="Le contexte CUB Frankfurt - Esteban TOUZET & Joris TEXIER" data-md-component="logo">
+      
+  <img src="../../../media/logo.png" alt="logo">
+
+    </a>
+    Le contexte CUB Frankfurt - Esteban TOUZET & Joris TEXIER
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bloc2 Administration des systèmes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bloc2 Administration des systèmes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 1 - Préparation de la maquette et premiers paramétrages du serveur Windows2019
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 2 - Mise en place et découverte d’un environnement de développement GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 3 - Introduction au PowerShell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 4 - Paramétrage et sécurisation du service DHCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fiche procédure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Fiche-proc%C3%A9dure/ParametrageSecurisationAD-Situation-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paramétrage et sécurisation du service AD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Fiche-proc%C3%A9dure/PowerShell-Situation-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure – Gérer les Droits des utilisateurs sur un dossier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Fiche-proc%C3%A9dure/RDP-Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure protocole RDP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Fiche-proc%C3%A9dure/RedondanceActifActif%26ActifPassif-Situation-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Redondance DHCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Fiche-proc%C3%A9dure/SSH-Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche procédure protocole SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 5 : Paramétrage et sécurisation du service AD
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Situation 5 : Paramétrage et sécurisation du service AD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation%205%20%3A%20Param%C3%A9trage%20et%20s%C3%A9curisation%20du%20service%20AD/I%20-%20Installation%20des%20services%20ADDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I - Installation des services ADDS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation%205%20%3A%20Param%C3%A9trage%20et%20s%C3%A9curisation%20du%20service%20AD/II%20-%20Param%C3%A9trage%20de%20l%E2%80%99active%20Directory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    II - Paramétrage de l’active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation%205%20%3A%20Param%C3%A9trage%20et%20s%C3%A9curisation%20du%20service%20AD/III%20-%20Commandes%20PowerShell%20pour%20l%E2%80%99active%20Directory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III - Commandes PowerShell pour l’active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation%205%20%3A%20Param%C3%A9trage%20et%20s%C3%A9curisation%20du%20service%20AD/IV%20-%20Redondance%20de%20l%E2%80%99active%20directory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV - Redondance de l’active directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation%205%20%3A%20Param%C3%A9trage%20et%20s%C3%A9curisation%20du%20service%20AD/V%20-%20D%C3%A9sactiver%20la%20r%C3%A9cursivit%C3%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V - Désactiver la récursivité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Administration%20des%20syst%C3%A8mes/Situation%205%20%3A%20Param%C3%A9trage%20et%20s%C3%A9curisation%20du%20service%20AD/VI%20-%20Test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VI - Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bloc2 Exploitation des services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bloc2 Exploitation des services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%203%20%3A%20Filtrage%20ACL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité 3 : Mise en place d’une politique de filtrage interne pour chaque agence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%203%20%3A%20HTTP-HTTPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité 3 : Constatation des limites du protocole HTTP et migration vers le protocole HTTPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité 0 : Mise en place de l’infrastructure réseau des agences de l’entreprise CUB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité 1 : Mise en place de serveurs DNS au sein de l’entreprise CUB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Activité 1 : Mise en place de serveurs DNS au sein de l’entreprise CUB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%201%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/I%20Serveur%20DNS%20r%C3%A9cursif/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I - Serveur DNS récursif
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%201%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/II%20Serveur%20DNS%20ma%C3%AEtre%20faisant%20autorit%C3%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    II - Serveur DNS maître faisant autorité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%201%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/III%20Serveur%20DNS%20esclave%20faisant%20autorit%C3%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III - Serveur DNS esclave faisant autorité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%201%20%3A%20Mise%20en%20place%20de%20serveurs%20DNS%20au%20sein%20de%20l%E2%80%99entreprise%20CUB/IV%20D%C3%A9l%C3%A9gation%20de%20zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV - Délégation de zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_5" id="__nav_2_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activité 2 : Mise en place d'un service WEB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Activité 2 : Mise en place d'un service WEB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/I%20-%20Serveur%20LAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I - Serveur LAMP sous Debian 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/II%20-%20Mise%20en%20place%20VHost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    II - Mise en place des hôtes virtuels Apache (VirtualHost)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/III%20-%20Configuration%20Wordpress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    III - Installation et configuration de WordPress pour www0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/IV%20-%20Recuperation%20site%20via%20GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IV - Récupération d’un site depuis un dépôt git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/V%20-%20Authentification%20plus%20filtrage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V - Ajouter une authentification à l’accès du « scanner0 » + filtrage pour autoriser que le VLAN Admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/VI%20-%20Fichier%20de%20zone%20DNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VI - Configuration DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bloc3 Cybersécurité
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bloc3 Cybersécurité
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation du service BASTION
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation du service BASTION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-tracert-agence-frankfurt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet tracert - Agence Frankfurt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-presentation-du-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I - Présentation du service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-installer-apache-guacamole-sur-debian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        II - Installer Apache Guacamole sur Debian
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II - Installer Apache Guacamole sur Debian">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-installer-les-prerequis-dapache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A - Installer les prérequis d'Apache Guacamole
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-compiler-et-installer-apache-guacamole-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B - Compiler et installer Apache Guacamole "Server"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-creer-le-repertoire-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C - Créer le répertoire de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-installer-guacamole-client-web-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D - Installer Guacamole Client (Web App)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-base-de-donnees-mariadb-pour-lauthentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E - Base de données MariaDB pour l'authentification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-utilisation-dapache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        III - Utilisation d’Apache Guacamole
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III - Utilisation d’Apache Guacamole">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-ajouter-une-connexion-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A - Ajouter une connexion SSH
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-recuperations-des-logs-de-connexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IV - Récupérations des logs de connexion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV - Récupérations des logs de connexion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-sur-linterface-de-la-web-app-de-apache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A - Sur l'interface de la Web App de Apache Guacamole :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-en-ligne-de-commande-sur-notre-serveur-apache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B - En ligne de commande sur notre serveur Apache Guacamole :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-annexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V - Annexe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V - Annexe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annexe-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe 1 :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annexe-2-pour-plus-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe 2 : Pour plus de sécurité
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Annexe 2 : Pour plus de sécurité">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-un-nouveau-compte-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer un nouveau compte admin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 1 : phase d’analyse préalable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 2 : Premiers paramétrage d'un pare-feu sur un site de l'entreprise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 3 : Routage et NAT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 4 : Crypthographie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 6 : Filtrage protocolaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Situation-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Situation 7 : Configuration d’un SIEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-tracert-agence-frankfurt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packet tracert - Agence Frankfurt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-presentation-du-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I - Présentation du service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-installer-apache-guacamole-sur-debian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        II - Installer Apache Guacamole sur Debian
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II - Installer Apache Guacamole sur Debian">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-installer-les-prerequis-dapache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A - Installer les prérequis d'Apache Guacamole
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-compiler-et-installer-apache-guacamole-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B - Compiler et installer Apache Guacamole "Server"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-creer-le-repertoire-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C - Créer le répertoire de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-installer-guacamole-client-web-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D - Installer Guacamole Client (Web App)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-base-de-donnees-mariadb-pour-lauthentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E - Base de données MariaDB pour l'authentification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-utilisation-dapache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        III - Utilisation d’Apache Guacamole
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III - Utilisation d’Apache Guacamole">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-ajouter-une-connexion-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A - Ajouter une connexion SSH
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-recuperations-des-logs-de-connexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IV - Récupérations des logs de connexion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV - Récupérations des logs de connexion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-sur-linterface-de-la-web-app-de-apache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A - Sur l'interface de la Web App de Apache Guacamole :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-en-ligne-de-commande-sur-notre-serveur-apache-guacamole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B - En ligne de commande sur notre serveur Apache Guacamole :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-annexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V - Annexe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V - Annexe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annexe-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe 1 :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annexe-2-pour-plus-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe 2 : Pour plus de sécurité
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Annexe 2 : Pour plus de sécurité">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-un-nouveau-compte-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer un nouveau compte admin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="presentation-du-service-bastion">Présentation du service BASTION</h1>
+<p><img alt="" src="../../../media/logo-cub.png" /></p>
+<h2 id="prerequis">Prérequis</h2>
+<p><img alt="" src="../../../media/schema-logique-cub.png" /></p>
+<p><em>Ducumentation en ligne : <a href="https://cubdocumentation.sioplc.fr">https://cubdocumentation.sioplc.fr</a></em>
+<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Service</strong></th>
+<th><strong>Nombre d’hôtes</strong></th>
+<th><strong>Adresse réseau</strong></th>
+<th><strong>Masque de sous-réseau</strong></th>
+<th><strong>Adresse de diffusion</strong></th>
+<th><strong>Description VLAN</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Production</td>
+<td>120</td>
+<td>192.168.6.0</td>
+<td>255.255.255.128</td>
+<td>192.168.6.127</td>
+<td>VLAN 56</td>
+</tr>
+<tr>
+<td>Client 1</td>
+<td>32</td>
+<td>192.168.6.128</td>
+<td>255.255.255.192</td>
+<td>192.168.6.191</td>
+<td>VLAN 10</td>
+</tr>
+<tr>
+<td>Administration systèmes et réseaux</td>
+<td>6</td>
+<td>192.168.6.192</td>
+<td>255.255.255.240</td>
+<td>192.168.6.207</td>
+<td>VLAN 20</td>
+</tr>
+</tbody>
+</table>
+<h2 id="packet-tracert-agence-frankfurt">Packet tracert - Agence Frankfurt</h2>
+<p><br></p>
+<p><img alt="" src="../../../media/packet-tracert-v1.jpg" />
+<br></p>
+<div style="text-align:center; margin-top:20px;">
+  <a href="https://drive.google.com/file/d/1L7Gp52YpPjjRhFdp9gp4L1sGORqAoCEK/view?usp=share_link" 
+     style="display:inline-block;
+            background:#e7e7e9;
+            color:#0096FF;
+            padding:11px 25px;
+            border-radius:10px;
+            text-decoration:none;
+            font-weight:50;
+            box-shadow:0 0 12px rgba(0,0,0,0.5);
+            transition:all 0.3s ease;"
+     onmouseover="this.style.background='#dcdce0'; this.style.color='#003d80';"
+     onmouseout="this.style.background='#e7e7e9'; this.style.color='#0096FF';">
+     🔗 Cliquer pour télécherger le paket tracert
+  </a>
+</div>
+<p><br></p>
+<h2 id="i-presentation-du-service">I - Présentation du service</h2>
+<p>C’est quoi le <strong>Bastion</strong> : Un bastion d’administration c’est un serveur qui sert de passerelle sécurisée pour accéder à d’autres machines sur un <strong>réseau privé</strong>. Au lieu de se connecter directement au serveur interne, les utilisateurs vont d’abord se connecter au Bastion ce qui permet de mieux contrôler et de <strong>surveiller les accès</strong></p>
+<p>En claire, le Bastion permet de centraliser les connexions.</p>
+<div class="admonition danger">
+<p class="admonition-title">Sans Bastion</p>
+<p>Chaque serveur doit être exposé aux ports <strong>22</strong> et <strong>3389</strong>.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Avec Bastion</p>
+<p>Seul le Bastion est exposé, les autres serveurs restent cachés. </p>
+</div>
+<p><img alt="" src="../../../media/bloc3/Bastion-1.png" /></p>
+<p><strong>Pour résumé</strong> : Un Bestion c’est comme un sas de sécurité numérique. Tu passes par lui pour aller administrer le reste. Apache Guacamole est un exemple pratique qui permet de faire de manière simple, centralisée et sécurisée via un navigateur </p>
+<h2 id="ii-installer-apache-guacamole-sur-debian">II - Installer Apache Guacamole sur Debian</h2>
+<h3 id="a-installer-les-prerequis-dapache-guacamole">A - Installer les prérequis d'Apache Guacamole</h3>
+<p>Sur la machine Debian, l’installation de ces dépendances se fait à l’aide de la commande suivante :</p>
+<p><div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>update
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>libcairo2-dev<span class="w"> </span>libjpeg62-turbo-dev<span class="w"> </span>libpng-dev<span class="w"> </span>libtool-bin<span class="w"> </span>uuid-dev<span class="w"> </span>libossp-uuid-dev<span class="w"> </span>libavcodec-dev<span class="w"> </span>libavformat-dev<span class="w"> </span>libavutil-dev<span class="w"> </span>libswscale-dev<span class="w"> </span>freerdp2-dev<span class="w"> </span>libpango1.0-dev<span class="w"> </span>libssh2-1-dev<span class="w"> </span>libtelnet-dev<span class="w"> </span>libvncserver-dev<span class="w"> </span>libwebsockets-dev<span class="w"> </span>libpulse-dev<span class="w"> </span>libssl-dev<span class="w"> </span>libvorbis-dev<span class="w"> </span>libwebp-dev
+</code></pre></div>
+Patienter le temps de l'installation.</p>
+<h3 id="b-compiler-et-installer-apache-guacamole-server">B - Compiler et installer Apache Guacamole "Server"</h3>
+<p>La partie « Server » d’Apache Guacamole doit être téléchargée puis compilée localement pour procéder à l’installation. Nous utiliserons la dernière version disponible, en l’occurrence la 1.5.5. Pour vérifier la version la plus récente, il est possible de s’appuyer sur les deux liens suivants :</p>
+<ul>
+<li>
+<p><em>Historique des versions d'Apache Guacamole : <a href="https://guacamole.apache.org/releases/">https://guacamole.apache.org/releases/</a></em></p>
+</li>
+<li>
+<p><em>Télécharger les sources d'installation d'Apache Guacamole : <a href="https://dlcdn.apache.org/guacamole/">https://dlcdn.apache.org/guacamole/</a></em></p>
+</li>
+</ul>
+<p><em>(Dans notre cas nous allons utiliser la version 1.5.5 qui est stable)</em></p>
+<p>On va se positionner dans le répertoire <code>/tmp</code> et télécharger l'archive <code>tar.gz</code> :</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/tmp
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://downloads.apache.org/guacamole/1.5.5/source/guacamole-server-1.5.5.tar.gz
+</code></pre></div></p>
+<p>Une fois le téléchargement terminé, on décompresse l'archive tar.gz et on se positionne dans le répertoire obtenu :</p>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>guacamole-server-1.5.5.tar.gz
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>guacamole-server-1.5.5/
+</code></pre></div>
+On exécute la commande ci-dessous pour se préparer à la compilation, ce qui va permettre de vérifier la présence des dépendances :</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./configure<span class="w"> </span>--with-systemd-dir<span class="o">=</span>/etc/systemd/system/
+</code></pre></div>
+<p>Avant de passer à la suite, on vérifie la sortie de cette commande. Normalement, les librairies principales et dont nous avons besoin sont sur le statut "yes". Comme ceci :</p>
+<p><img alt="" src="../../../media/bloc3/Bastion-2.png" /></p>
+<p>Regardez bien la sortie de la commande précédente, afin de vérifier la présence éventuelle d'une erreur. Si vous obtenez une erreur qui spécifie "<strong>guacenc_video_alloc</strong>", c'est lié au composant "<strong>guacenc</strong>" qui est utilisé pour créer les enregistrements au format vidéo. Dans ce cas, vous pouvez relancer la commande précédente en désactivant ce composant</p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./configure<span class="w"> </span>--with-systemd-dir<span class="o">=</span>/etc/systemd/system/<span class="w"> </span>--disable-guacenc
+</code></pre></div>
+Ensuite, poursuivez avec la compilation du code source de guacamole-server :</p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>make
+</code></pre></div>
+Enfin, on termine par installer le composant Guacamole Server :</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p><img alt="" src="../../../media/bloc3/Bastion-3.png" /></p>
+<p><span style="color: red; font-weight: bold;">La partie serveur d'Apache Guacamole est installée !</span> <br> Mais d'autres étapes sont à réaliser...</p>
+<p>La commande ci-dessous sert à mettre à jour les liens entre guacamole-server et les librairies :</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ldconfig
+</code></pre></div>
+<p>Ensuite, on va <strong>démarrer le service</strong> <code>guacd</code> correspondant à Guacamole et <strong>activer son démarrage automatique</strong>. La première commande sert à prendre en compte le nouveau service.</p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>guacd
+</code></pre></div>
+Enfin, on <strong>vérifie le statut</strong> d'Apache Guacamole Server :</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>guacd
+</code></pre></div>
+<h3 id="c-creer-le-repertoire-de-configuration">C - Créer le répertoire de configuration</h3>
+<p>Dernière étape avant de passer à la partie client d'Apache Guacamole, <strong>on crée l'arborescence pour la configuration d'Apache Guacamole</strong>. Cela va donner le répertoire <code>/etc/guacamole</code> avec les sous-répertoires "<strong>extensions</strong>" et "<strong>lib</strong>". Nous en aurons besoin par la suite pour mettre en place le stockage des données dans une base de données MariaDB / MySQL.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/guacamole/<span class="o">{</span>extensions,lib<span class="o">}</span>
+</code></pre></div>
+<h3 id="d-installer-guacamole-client-web-app">D - Installer Guacamole Client (Web App)</h3>
+<p>Pour la <strong>Web App</strong> correspondante à Apache Guacamole, et donc à la partie cliente, nous avons besoin d'un serveur <strong>Tomcat 9</strong> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> . J'insiste sur le fait que <strong>Tomcat 10, distribué par défaut via les dépôts de Debian 12</strong>, n'est <strong>pas pris en charge par Apache Guacamole</strong>. Nous devons <strong>ajouter le dépôt de Debian 11</strong> sur notre machine Debian 12 afin de pouvoir <strong>télécharger les paquets correspondants à Tomcat 9</strong>. (<a href="#annexe-tomcat">Explication « Tomcat » en annexe</a>)</p>
+<p>Nous allons ajouter un nouveau fichier source pour Apt. Créez le fichier suivant :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/apt/sources.list.d/bullseye.list<span class="w"> </span>
+</code></pre></div></p>
+<p>Ajoutez cette ligne, enregistrez et fermez le fichier.
+<div class="highlight"><pre><span></span><code>deb<span class="w"> </span>http://deb.debian.org/debian/<span class="w"> </span>bullseye<span class="w"> </span>main
+</code></pre></div></p>
+<p>Mettez à jour le cache des paquets :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</code></pre></div></p>
+<p>Effectuez l'installation des paquets Tomcat 9 sur Debian 12 avec cette commande :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>tomcat9<span class="w"> </span>tomcat9-admin<span class="w"> </span>tomcat9-common<span class="w"> </span>tomcat9-user
+</code></pre></div></p>
+<p>Puis, nous allons <strong>télécharger la dernière version de la Web App d'Apache Guacamole</strong> depuis le dépôt officiel (même endroit que pour la partie serveur). On se positionne dans <code>/tmp</code> et on télécharge la Web App, ce qui revient à télécharger un fichier avec l'extension <code>.war</code>. Ici, la <strong>version 1.5.5</strong> est téléchargée.</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/tmp
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://downloads.apache.org/guacamole/1.5.5/binary/guacamole-1.5.5.war
+</code></pre></div>
+Une fois que le fichier est téléchargé, on le déplace dans la librairie de Web App de Tomcat9 avec cette commande :</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mv<span class="w"> </span>guacamole-1.5.5.war<span class="w"> </span>/var/lib/tomcat9/webapps/guacamole.war
+</code></pre></div>
+<p>Puis, on relance les services Tomcat9 et Guacamole :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>tomcat9<span class="w"> </span>guacd
+</code></pre></div>
+<span style="color: red; font-weight: bold;">Apache Guacamole Client est installé !</span></p>
+<h3 id="e-base-de-donnees-mariadb-pour-lauthentification">E - Base de données MariaDB pour l'authentification</h3>
+<div class="admonition info">
+<p class="admonition-title">Déploiement de MariaDB</p>
+<p>Cette dernière étape avant de commencer à utiliser Apache Guacamole consiste à <strong>déployer MariaDB Server (ou MySQL Server, au choix) sur Debian pour qu'Apache Guacamole s'appuie sur une base de données</strong>. Cette base de données sera utilisée pour stocker toutes les informations de l'application.</p>
+</div>
+<p>On commence par installer le paquet MariaDB Server :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>mariadb-server
+</code></pre></div></p>
+<p>Puis, on exécute le script ci-dessous pour sécuriser un minimum notre instance (changer le mot de passe root, désactiver les accès anonymes, etc...). Si besoin d'aide pour cette partie, je vous encourage à regarder <a href="https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/">ce tutoriel</a>.</p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mysql_secure_installation
+</code></pre></div>
+<img alt="" src="../../../media/bloc3/Bastion-4.png" /></p>
+<p>Une fois cette étape effectuée, on va se connecter en tant que root à notre instance MariaDB :
+<div class="highlight"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+</code></pre></div></p>
+<p>Ceci est utile pour <strong>créer une base de données et un utilisateur dédié pour Apache Guacamole</strong>. Les commandes ci-dessous permettent de créer la base de données <code>guacadb</code>, avec l'utilisateur <code>guaca_user</code> associé au mot de passe <code>etudiant_007</code> (adaptez ces valeurs sibesoin). Cet utilisateur dispose de quelques droits sur la base de données.</p>
+<p><div class="highlight"><pre><span></span><code>CREATE<span class="w"> </span>DATABASE<span class="w"> </span>guacadb<span class="p">;</span>
+CREATE<span class="w"> </span>USER<span class="w"> </span><span class="s1">&#39;guaca_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>IDENTIFIED<span class="w"> </span>BY<span class="w"> </span><span class="s1">&#39;etudiant_007&#39;</span><span class="p">;</span>
+GRANT<span class="w"> </span>SELECT,INSERT,UPDATE,DELETE<span class="w"> </span>ON<span class="w"> </span>guacadb.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;guaca_user&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+FLUSH<span class="w"> </span>PRIVILEGES<span class="p">;</span>
+EXIT<span class="p">;</span>
+</code></pre></div>
+<img alt="" src="../../../media/bloc3/Bastion-5.png" /></p>
+<p>La suite va consister à <strong>ajouter l'extension MySQL à Apache Guacamole</strong> ainsi que le connecteur correspondant.</p>
+<p>Toujours depuis le dépôt officiel, on télécharge cette extension :</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/tmp
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://downloads.apache.org/guacamole/1.5.5/binary/guacamole-auth-jdbc-1.5.5.tar.gz
+</code></pre></div></p>
+<p>Puis, on décompresse l'archive <code>tar.gz</code> obtenue :
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>guacamole-auth-jdbc-1.5.5.tar.gz
+</code></pre></div></p>
+<p>On déplace le fichier <code>.jar</code> de l'extension dans le répertoire <code>/etc/guacamole/extensions/</code> créé précédemment :</p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mv<span class="w"> </span>guacamole-auth-jdbc-1.5.5/mysql/guacamole-auth-jdbc-mysql-1.5.5.jar<span class="w"> </span>/etc/guacamole/extensions/
+</code></pre></div>
+Ensuite, le connecteur MySQL doit être téléchargé depuis le site de MySQL (peu importe si vous utilisez MariaDB ou MySQL).</p>
+<div class="admonition info">
+<p class="admonition-title">Télécherger le connecteur MySQL</p>
+<p>Utilisez le lien ci-dessous pour repérer le lien de la dernière version en choisissant "<strong>Platform Independent</strong>", puis en cliquant sur le bouton "<strong>Download</strong>" permettant d'obtenir la "<strong>Compressed TAR Archive</strong>".</p>
+<p><a href="https://dev.mysql.com/downloads/connector/j/">Télécharger le connecteur MySQL</a></p>
+<p>Une autre page se charge, copiez le lien sous "<strong>No thanks, just start my download.</strong>". Pour la version actuelle, à savoir 9.1.0, le lien est inclus à la commande ci-dessous. (le lien est déjà renseigner dans la commande ci-dessous)</p>
+</div>
+<p>On lance le téléchargement :
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/tmp
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-9.1.0.tar.gz
+</code></pre></div></p>
+<p>Puis, on décompresse l'archive tar.gz :
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>mysql-connector-j-9.1.0.tar.gz
+</code></pre></div></p>
+<p>On copie (ou déplace) le fichier <code>.jar</code> du connecteur vers le répertoire <code>lib</code> d'Apache Guacamole :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>cp<span class="w"> </span>mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar<span class="w"> </span>/etc/guacamole/lib/
+</code></pre></div>
+Les dépendances sont déployées, mais nous n'avons pas encore fini cette intégration avec MariaDB.</p>
+<p>En effet, il faut <strong>importer la structure de la base de données Apache Guacamole dans notre base de données <code>guacadb</code></strong>. Pour cela, on va importer tous les fichiers SQL situés dans le répertoire <code>guacamole-auth-jdbc-1.5.5/mysql/schema/</code>. Le mot de passe root de MariaDB doit être saisit pour effectuer l'import.</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>guacamole-auth-jdbc-1.5.5/mysql/schema/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>*.sql<span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>guacadb
+</code></pre></div></p>
+<p>Une fois que c'est fait, on va <strong>créer et éditer le fichier <code>guacamole.properties</code></strong> pour déclarer la connexion à MariaDB. Ce fichier peut être utilisé pour d'autres paramètres, selon vos besoins.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/guacamole/guacamole.properties
+</code></pre></div>
+<p>Dans ce fichier, insérez les lignes ci-dessous en adaptant les trois dernières lignes avec vos valeurs <em>(si vous avez suivi la documentation ci-dessus, alors rien n’est à changer) :</em></p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># MySQL</span>
+mysql-hostname:<span class="w"> </span><span class="m">127</span>.0.0.1
+mysql-port:<span class="w"> </span><span class="m">3306</span>
+mysql-database:<span class="w"> </span>guacadb
+mysql-username:<span class="w"> </span>guaca_user
+mysql-password:<span class="w"> </span>etudiant_007
+</code></pre></div>
+<em>Enregistrez et fermez le fichier.</em></p>
+<p>Tant que l'on est dans la configuration, <strong>éditez le fichier <code>guacd.conf</code> pour déclarer le serveur Guacamole</strong> (ici, on déclare une connexion locale sur le port par défaut, à savoir 4822).</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/guacamole/guacd.conf
+</code></pre></div>
+<p>Voici le code à intégrer :
+<div class="highlight"><pre><span></span><code><span class="o">[</span>server<span class="o">]</span><span class="w"> </span>
+<span class="nv">bind_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.0.0.0
+<span class="nv">bind_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4822</span>
+</code></pre></div></p>
+<p>On enregistre et on termine par redémarrer les trois services liés à Apache Guacamole :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>tomcat9<span class="w"> </span>guacd<span class="w"> </span>mariadb
+</code></pre></div>
+<span style="color: red; font-weight: bold;">L'installation de base est enfin terminée !!!</span></p>
+<h2 id="iii-utilisation-dapache-guacamole">III - Utilisation d’Apache Guacamole</h2>
+<p>On va pouvoir se connecter à Apache Guacamole pour effectuer nos premiers pas sur l'interface de la Web App.</p>
+<p><code>http://&lt;Adresse IP&gt;:8080/guacamole/</code></p>
+<p>La page de connexion suivante va s'afficher :
+<img alt="" src="../../../media/bloc3/Bastion-6.png" /></p>
+<p>Pour se connecter, on va utiliser les identifiants par défaut :</p>
+<ul>
+<li>Utilisateur : guacadmin</li>
+<li>Mot de passe : guacadmin</li>
+</ul>
+<p><strong>Nous voilà sur Apache Guacamole !</strong> Mais pour l'instant, c'est vide... </p>
+<h3 id="a-ajouter-une-connexion-ssh">A - Ajouter une connexion SSH</h3>
+<p>Nous allons créer notre première connexion dans Apache Guacamole, de manière à <strong>se connecter à un serveur en SSH !</strong></p>
+<p>Pour créer une nouvelle connexion : <code>Paramètres &gt; Connexion &gt; Nouvelle connexion</code></p>
+<p><img alt="" src="../../../media/bloc3/Bastion-7.png" /></p>
+<p>Puis dans l’onglet « <strong>Connexions</strong> » faite « <strong>Nouvelle Connexion</strong> » </p>
+<p><img alt="" src="../../../media/bloc3/Bastion-8.png" /></p>
+<p>Renseigner maintenant les informations de votre serveur <strong>cible</strong> :</p>
+<p><img alt="" src="../../../media/bloc3/Bastion-9.png" /></p>
+<p>Retourner maintenant dans Accueil</p>
+<p><img alt="" src="../../../media/bloc3/Bastion-10.png" /></p>
+<p>Cliquer simplement sur la configuration de connexion que vous venez de créer afin de vous y connecter </p>
+<p><img alt="" src="../../../media/bloc3/Bastion-11.png" /></p>
+<p><img alt="" src="../../../media/bloc3/Bastion-12.png" /></p>
+<h2 id="iv-recuperations-des-logs-de-connexion">IV - Récupérations des logs de connexion</h2>
+<p>Dans le cadre de <strong>l’administration et du suivi des accès</strong>, la récupération des logs de connexion est une étape essentielle. Apache Guacamole enregistre les événements liés aux connexions utilisateurs, ce qui permet d’assurer une meilleure <strong>traçabilité</strong>, de faciliter le diagnostic en cas d’incident et de renforcer la <strong>sécurité de l’infrastructure</strong>. Cette section présente les méthodes permettant d’accéder et d’exploiter ces journaux.</p>
+<h3 id="a-sur-linterface-de-la-web-app-de-apache-guacamole">A - Sur l'interface de la Web App de Apache Guacamole :</h3>
+<p>La web App de Apache Guacamole utilise la base de données MariaDB pour récupérer les informations suivantes.</p>
+<p><strong>Paramètres &gt; …</strong></p>
+<p><img alt="" src="../../../media/bloc3/Bastion-13.png" /></p>
+<p><strong>Paramètres &gt; Historique</strong></p>
+<p><img alt="" src="../../../media/bloc3/Bastion-14.png" /></p>
+<p>Voici l’historique de connexion effectuer sur notre serveur <strong>Bastion</strong>. </p>
+<div class="admonition note">
+<p class="admonition-title">Télécherger un fichier de log</p>
+<p>Il est également possible de télécherger les logs en fichier <strong>csv</strong>. Il suffit de cliquer sur le bouton "<strong>Télécharger</strong>" en haut à droite.</p>
+</div>
+<p><img alt="" src="../../../media/bloc3/Bastion-15.png" /></p>
+<p>Nous pouvons identifier plusieurs informations importantes concernant la traçabilité comme :</p>
+<ul>
+<li>L’utilisateur </li>
+<li>L’heure d’ouverture d’une connexion à un serveur </li>
+<li>La durée de connexion</li>
+<li>Le nom du serveur cible </li>
+<li>L’adresse IP du client </li>
+</ul>
+<h3 id="b-en-ligne-de-commande-sur-notre-serveur-apache-guacamole">B - En ligne de commande sur notre serveur Apache Guacamole :</h3>
+<p>Connection a MariaDB :
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mysgul<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>guacadb
+</code></pre></div></p>
+<p>Puis lancer la commande suivante pour afficher les logs :
+<div class="highlight"><pre><span></span><code>SELECT<span class="w"> </span>user_id,<span class="w"> </span>connection_id,<span class="w"> </span>start_date,<span class="w"> </span>end_date
+FROM<span class="w"> </span>guacamole_connection_history
+ORDER<span class="w"> </span>BY<span class="w"> </span>start_date<span class="w"> </span>DESC
+LIMIT<span class="w"> </span><span class="m">10</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="v-annexe">V - Annexe</h2>
+<h3 id="annexe-1">Annexe 1 : <span id="annexe-tomcat"></span></h3>
+<p>Tomcat9, c’est un petit logiciel qui sert à lancer des sites web faits en Java.</p>
+<p>Dans Guacamole le fichier <code>guacamole.war</code> contient l’interface web (l’écran de connexion, le portail). <strong>Tomcat9</strong> est là pour ouvrir ce fichier et le rendre accessible dans ton navigateur à l’adresse : <code>http://IP_BASTION:8080/guacamole</code></p>
+<p><strong>En résumé :</strong> Tomcat9 c'est le programme qui affiche Guacamole dans le navigateur</p>
+<h3 id="annexe-2-pour-plus-de-securite">Annexe 2 : Pour plus de sécurité</h3>
+<h4 id="creer-un-nouveau-compte-admin">Créer un nouveau compte admin</h4>
+<p>Tout d'abord, nous allons <strong>créer un nouveau compte d'administration</strong> et supprimer le compte par défaut, pour des raisons de sécurité.
+Notre objectif est le suivant :</p>
+<ul>
+<li>Créer un nouveau compte administrateur (avec un nom personnalisé)</li>
+<li>Se déconnecter du compte "<strong>guacadmin</strong>"</li>
+<li>Se reconnecter avec le nouveau compte administrateur</li>
+<li>Supprimer le compte "<strong>guacadmin</strong>" par défaut (ou à minima changer son mot de passe et le désactiver)</li>
+<li>Pour accéder aux paramètres, il faut cliquer sur le nom d'utilisateur en haut à droite puis sur "<strong>Paramètres</strong>".</li>
+</ul>
+<p><img alt="" src="../../../media/bloc3/Bastion-16.png" /></p>
+<p>Ensuite, sur l'onglet "<strong>Utilisateurs</strong>" et sur "<strong>Nouvel utilisateur</strong>".</p>
+<p><img alt="" src="../../../media/bloc3/Bastion-17.png" /></p>
+<p>Un formulaire s'affiche. <strong>Indiquez un nom d'utilisateur</strong>, en évitant les traditionnels "Administrateur", "Admin", etc.... Et choisissez un <strong>mot de passe robuste</strong>. Cochez l'ensemble des permissions pour que cet utilisateur soit administrateur de la plateforme Guacamole.</p>
+<p><img alt="" src="../../../media/bloc3/Bastion-18.png" /></p>
+<p>Même si cela ne s'applique pas à notre utilisateur actuel, on remarque des options intéressantes dans la section "<strong>Restrictions de compte</strong>". On peut <strong>limiter l'accès aux sessions uniquement sur certaines plages horaires</strong>, mais aussi <strong>activer et désactiver le compte à une date spécifique</strong>. Très intéressant pour donner un accès à un prestataire tout en gardant le contrôle sur les sessions.</p>
+<p>Ce nouveau compte est créé, donc suivez les étapes évoquées ci-dessus pour vous débarrasser du compte guacadmin. Tout se passe dans les paramètres puis dans la section "<strong>Utilisateurs</strong>".</p>
+<div class="admonition info">
+<p class="admonition-title">Groupe avec Guacamole</p>
+<p>Apache Guacamole permet aussi de créer des groupes pour faciliter la gestion des autorisations.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Tomcat 9 sert d’intermédiaire entre le navigateur du client et les applications web Java hébergées sur le serveur.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../../Bloc2-Exploitation%20des%20services/Activit%C3%A9%202%20%3A%20Mise%20en%20place%20d%27un%20service%20WEB/VI%20-%20Fichier%20de%20zone%20DNS/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: VI - Configuration DNS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                VI - Configuration DNS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Situation-1/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Situation 1 : phase d’analyse préalable">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Situation 1 : phase d’analyse préalable
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2025 — Esteban Touzet & Joris Texier
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
