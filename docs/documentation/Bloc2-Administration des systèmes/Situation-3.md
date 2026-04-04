@@ -1,4 +1,4 @@
-# Situation 3 - Introduction au PowerShell
+# Introduction au PowerShell
 
 
 ![](../../media/logo-cub.png)

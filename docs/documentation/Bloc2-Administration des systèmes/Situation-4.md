@@ -1,4 +1,4 @@
-# Situation 4 - Paramétrage et sécurisation du service DHCP
+# Paramétrage et sécurisation du service DHCP
 
 
 ![](../../media/logo-cub.png)

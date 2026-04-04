@@ -1,4 +1,4 @@
-# Situation 2 - Mise en place et découverte d’un environnement de développement GIT
+# Mise en place et découverte d’un environnement de développement GIT
 
 
 ![](../../media/logo-cub.png)

@@ -1,4 +1,4 @@
-# Situation 1 - Préparation de la maquette et premiers paramétrages du serveur Windows2019
+# Préparation de la maquette et premiers paramétrages du serveur Windows2019
 
 
 ![](../../media/logo-cub.png)
