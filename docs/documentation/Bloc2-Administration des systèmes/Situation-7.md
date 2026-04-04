@@ -1,4 +1,4 @@
-# Scripting PowerShell — Gestion de fichiers
+# Scripting PowerShell - Gestion de fichiers
 
 ![](../../media/logo-cub.png)
 

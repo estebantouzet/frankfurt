@@ -1,4 +1,4 @@
-# Scripting PowerShell — Développement d'un outil d'audit des services Windows
+# Scripting PowerShell - Développement d'un outil d'audit des services Windows
 
 ![](../../media/logo-cub.png)
 

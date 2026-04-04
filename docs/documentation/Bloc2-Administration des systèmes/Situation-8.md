@@ -1,4 +1,4 @@
-# Scripting PowerShell — Gestion du service DHCP
+# Scripting PowerShell - Gestion du service DHCP
 
 ![](../../media/logo-cub.png)
 

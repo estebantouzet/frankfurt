@@ -1,4 +1,4 @@
-# Scripting PowerShell — Gestion du service AD
+# Scripting PowerShell - Gestion du service AD
 
 ![](../../media/logo-cub.png)
 
