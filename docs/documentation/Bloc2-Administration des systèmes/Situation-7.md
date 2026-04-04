@@ -2,7 +2,83 @@
 
 ![](../../media/logo-cub.png)
 
-*11/03/2026*
+## Prérequis
+
+![](../../media/schema-logique-cub.png)
+
+*Ducumentation en ligne : [https://cubdocumentation.sioplc.fr](https://cubdocumentation.sioplc.fr)*
+<br>
+
+## Adressage 
+
+| Puissance de 2 | Valeur |
+|:---------------:|:------:|
+| 2⁰ | 1 |
+| 2¹ | 2 |
+| 2² | 4 |
+| 2³ | 8 |
+| 2⁴ | 16 |
+| 2⁵ | 32 |
+| 2⁶ | 64 |
+| <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**2⁷**</span> | <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**128**</span> |
+
+**Adresse réseau : 192.168.6.0/24**
+
+<br>
+
+| **Service** | **Nombre d’hôtes** | **Adresse réseau** | **Masque de sous-réseau** | **Adresse de diffusion** | **Description VLAN** |
+|--------------|--------------------:|--------------------|----------------------------|---------------------------|----------------------|
+| Production | 120 | 192.168.6.0 | <span style="background-color:#b7fbb7;">255.255.255.128</span> | 192.168.6.127 | VLAN 56 |
+| Client 1 | 32 | 192.168.6.128 | 255.255.255.192 | 192.168.6.191 | VLAN 10 |
+| Administration systèmes et réseaux | 6 | 192.168.6.192 | 255.255.255.240 | 192.168.6.207 | VLAN 20 |
+
+<br>
+
+**N°1 sous-réseau Production = 126 hôtes →** <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**2⁷**</span> **→ <span style="background-color:#b7fbb7;">/25**</span>
+
+**Production = 192.168.6.0/24 → 255.255.255.128 →** <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**x.x.x.1000 0000**</span>
+
+**Diffusion :** `1100 0000 . 1010 1000 . 0000 0110 . 0111 1111`  
+➡️ 192.168.6.**127**
+
+___
+
+## Schéma logique – Agence Frankfur
+
+![](../../media/bloc2/ExploitationServ/Activite0-1.png)
+
+___
+## Packet tracert - Agence Frankfurt
+<br>
+
+![](../../media/packet-tracert-v1.jpg)
+<br>
+
+<div style="text-align:center; margin-top:20px;">
+  <a href="https://drive.google.com/file/d/1L7Gp52YpPjjRhFdp9gp4L1sGORqAoCEK/view?usp=share_link" 
+     style="display:inline-block;
+            background:#e7e7e9;
+            color:#0096FF;
+            padding:11px 25px;
+            border-radius:10px;
+            text-decoration:none;
+            font-weight:50;
+            box-shadow:0 0 12px rgba(0,0,0,0.5);
+            transition:all 0.3s ease;"
+     onmouseover="this.style.background='#dcdce0'; this.style.color='#003d80';"
+     onmouseout="this.style.background='#e7e7e9'; this.style.color='#0096FF';">
+     🔗 Cliquer pour télécherger le paket tracert
+  </a>
+</div>
+<br>
+
+___
+
+## Plan de câblage 
+
+![](../../media/bloc2/ExploitationServ/Activite0-2.png)
+
+___
 
 ## PARTIE 1 — Analyse sans IA
 
@@ -36,9 +112,20 @@ Le rôle général : **archiver les fichiers anciens** et **nettoyer les dossier
 
 ## PARTIE 2 — Utilisation libre de l'IA
 
-### Commenter chaque ligne du script et expliquer son fonctionnement détaillé
+### Énumérer au moins une critique du script actuel
 
-Script `FileMaintenance-Esteban.ps1` (voir ci-dessous, commenté intégralement) :
+En cas d'erreur, aucune notification n'est émise. Le script se termine brutalement ou poursuit son exécution sans fournir d'indication sur la nature de l'erreur rencontrée. Cette observation découle d'une discussion avec mon maître de stage.
+
+### Proposer une réponse à la critique énoncée précédemment
+
+Ce qui a été rajouté par l'IA pour la **gestion d'erreurs** :
+
+- Toutes les erreurs deviennent détectables (`$ErrorActionPreference="Stop"`, `StrictMode`)
+- Chaque étape critique est protégée avec `try/catch`
+- Chaque erreur est loggée + affichée (`Write-Log` + `Write-Error`)
+- Les erreurs locales n'arrêtent pas tout, sauf celles qui rendent le script inutilisable
+- En cas d'échec critique, le script s'arrête proprement avec `exit 1`
+
 
 ```powershell
 # Définition des paramètres du script
@@ -202,17 +289,3 @@ catch {
     exit 1
 }
 ```
-
-### Énumérer au moins une critique du script actuel
-
-En cas d'erreur, aucune notification n'est émise. Le script se termine brutalement ou poursuit son exécution sans fournir d'indication sur la nature de l'erreur rencontrée. Cette observation découle d'une discussion avec mon maître de stage.
-
-### Proposer une réponse à la critique énoncée précédemment
-
-Ce qui a été rajouté par l'IA pour la **gestion d'erreurs** :
-
-- Toutes les erreurs deviennent détectables (`$ErrorActionPreference="Stop"`, `StrictMode`)
-- Chaque étape critique est protégée avec `try/catch`
-- Chaque erreur est loggée + affichée (`Write-Log` + `Write-Error`)
-- Les erreurs locales n'arrêtent pas tout, sauf celles qui rendent le script inutilisable
-- En cas d'échec critique, le script s'arrête proprement avec `exit 1`

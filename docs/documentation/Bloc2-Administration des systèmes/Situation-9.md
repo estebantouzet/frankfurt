@@ -2,7 +2,83 @@
 
 ![](../../media/logo-cub.png)
 
-*25/03/2026*
+## Prérequis
+
+![](../../media/schema-logique-cub.png)
+
+*Ducumentation en ligne : [https://cubdocumentation.sioplc.fr](https://cubdocumentation.sioplc.fr)*
+<br>
+
+## Adressage 
+
+| Puissance de 2 | Valeur |
+|:---------------:|:------:|
+| 2⁰ | 1 |
+| 2¹ | 2 |
+| 2² | 4 |
+| 2³ | 8 |
+| 2⁴ | 16 |
+| 2⁵ | 32 |
+| 2⁶ | 64 |
+| <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**2⁷**</span> | <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**128**</span> |
+
+**Adresse réseau : 192.168.6.0/24**
+
+<br>
+
+| **Service** | **Nombre d’hôtes** | **Adresse réseau** | **Masque de sous-réseau** | **Adresse de diffusion** | **Description VLAN** |
+|--------------|--------------------:|--------------------|----------------------------|---------------------------|----------------------|
+| Production | 120 | 192.168.6.0 | <span style="background-color:#b7fbb7;">255.255.255.128</span> | 192.168.6.127 | VLAN 56 |
+| Client 1 | 32 | 192.168.6.128 | 255.255.255.192 | 192.168.6.191 | VLAN 10 |
+| Administration systèmes et réseaux | 6 | 192.168.6.192 | 255.255.255.240 | 192.168.6.207 | VLAN 20 |
+
+<br>
+
+**N°1 sous-réseau Production = 126 hôtes →** <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**2⁷**</span> **→ <span style="background-color:#b7fbb7;">/25**</span>
+
+**Production = 192.168.6.0/24 → 255.255.255.128 →** <span style="background-color:#aee7ff; padding:2px 4px; border-radius:3px;">**x.x.x.1000 0000**</span>
+
+**Diffusion :** `1100 0000 . 1010 1000 . 0000 0110 . 0111 1111`  
+➡️ 192.168.6.**127**
+
+___
+
+## Schéma logique – Agence Frankfur
+
+![](../../media/bloc2/ExploitationServ/Activite0-1.png)
+
+___
+## Packet tracert - Agence Frankfurt
+<br>
+
+![](../../media/packet-tracert-v1.jpg)
+<br>
+
+<div style="text-align:center; margin-top:20px;">
+  <a href="https://drive.google.com/file/d/1L7Gp52YpPjjRhFdp9gp4L1sGORqAoCEK/view?usp=share_link" 
+     style="display:inline-block;
+            background:#e7e7e9;
+            color:#0096FF;
+            padding:11px 25px;
+            border-radius:10px;
+            text-decoration:none;
+            font-weight:50;
+            box-shadow:0 0 12px rgba(0,0,0,0.5);
+            transition:all 0.3s ease;"
+     onmouseover="this.style.background='#dcdce0'; this.style.color='#003d80';"
+     onmouseout="this.style.background='#e7e7e9'; this.style.color='#0096FF';">
+     🔗 Cliquer pour télécherger le paket tracert
+  </a>
+</div>
+<br>
+
+___
+
+## Plan de câblage 
+
+![](../../media/bloc2/ExploitationServ/Activite0-2.png)
+
+___
 
 ## PARTIE 1 — Analyse sans IA
 
@@ -51,7 +127,38 @@ Ce script permet de **détecter les comptes utilisateurs inactifs** dans Active 
 - Confirmation obligatoire avant désactivation
 - Déplacement automatique des comptes désactivés vers `OU=Comptes_Désactivés`
 
-Script `ADAudit-Esteban.ps1` (voir ci-dessous, commenté intégralement) :
+**Détail :**
+ADAudit.ps1 est un script PowerShell pour gérer les comptes utilisateurs inactifs dans Active Directory. Il compare la dernière date de connexion à un seuil d’inactivité et génère un rapport des comptes inutilisés. Avec le paramètre -DisableAccounts, il désactive automatiquement ces comptes, renforçant la sécurité et l’hygiène de l’annuaire. Un journal avec horodatage enregistre toutes les opérations pour un historique clair des audits de sécurité.
+
+
+### Énumérer au moins une critique du script actuel
+
+**Pas de confirmation :** La désactivation des comptes se fait sans demander confirmation à l'administrateur, ce qui peut entraîner une désactivation accidentelle de comptes importants.
+
+### Proposer une réponse à la critique énoncée précédemment
+
+**Nouvelles fonctionnalités de sécurité ajoutées :**
+
+1. **Affichage détaillé** : liste tous les comptes qui seront désactivés avec leur dernière date de connexion
+2. **Confirmation obligatoire** : demande explicitement à l'administrateur de confirmer avec `O` ou `N`
+3. **Gestion du cas vide** : affiche un message si aucun compte inactif n'est trouvé
+4. **Annulation propre** : permet d'annuler l'opération sans interrompre le script
+
+Flux d'exécution avec confirmation :
+
+```
+Recherche → Affichage des résultats → [Si -DisableAccounts] →
+Affichage liste → Confirmation → [Oui] Désactivation + Déplacement / [Non] Annulation
+```
+
+L'administrateur voit maintenant exactement quels comptes seront affectés avant de prendre une décision, ce qui élimine le risque de désactivation accidentelle de comptes importants.
+
+## PARTIE 3 — Demande d'évolution
+
+Nouvelle exigence de la DSI : tout compte utilisateur désactivé devra désormais être automatiquement **déplacé** dans l'OU `OU=Comptes_Désactivés,DC=cub,DC=local` afin d'assurer une meilleure organisation et traçabilité dans l'Active Directory.
+
+Cette évolution est intégrée dans le script via le paramètre `$TargetOU` et la commande `Move-ADObject` dans la fonction `Disable-InactiveUsers` (voir script commenté ci-dessus).
+
 
 ```powershell
 # Déclaration des paramètres du script
@@ -174,31 +281,3 @@ if ($DisableAccounts) {
 # Affichage d'un message indiquant la fin du script
 Write-Info "Fin du script."
 ```
-
-### Énumérer au moins une critique du script actuel
-
-**Pas de confirmation :** La désactivation des comptes se fait sans demander confirmation à l'administrateur, ce qui peut entraîner une désactivation accidentelle de comptes importants.
-
-### Proposer une réponse à la critique énoncée précédemment
-
-**Nouvelles fonctionnalités de sécurité ajoutées :**
-
-1. **Affichage détaillé** : liste tous les comptes qui seront désactivés avec leur dernière date de connexion
-2. **Confirmation obligatoire** : demande explicitement à l'administrateur de confirmer avec `O` ou `N`
-3. **Gestion du cas vide** : affiche un message si aucun compte inactif n'est trouvé
-4. **Annulation propre** : permet d'annuler l'opération sans interrompre le script
-
-Flux d'exécution avec confirmation :
-
-```
-Recherche → Affichage des résultats → [Si -DisableAccounts] →
-Affichage liste → Confirmation → [Oui] Désactivation + Déplacement / [Non] Annulation
-```
-
-L'administrateur voit maintenant exactement quels comptes seront affectés avant de prendre une décision, ce qui élimine le risque de désactivation accidentelle de comptes importants.
-
-## PARTIE 3 — Demande d'évolution
-
-Nouvelle exigence de la DSI : tout compte utilisateur désactivé devra désormais être automatiquement **déplacé** dans l'OU `OU=Comptes_Désactivés,DC=cub,DC=local` afin d'assurer une meilleure organisation et traçabilité dans l'Active Directory.
-
-Cette évolution est intégrée dans le script via le paramètre `$TargetOU` et la commande `Move-ADObject` dans la fonction `Disable-InactiveUsers` (voir script commenté ci-dessus).
